@@ -22,6 +22,8 @@ search: true
 
 # API Documentation
 
-Welcome to the iBuildApp API documentation! You can use our API to access iBuildApp API endpoints, 
+Welcome to the iBuildApp API documentation! You can use our API to access iBuildApp API endpoints for our solutions and features. 
 
-You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right (where available).
+You can view code examples in the dark area to the right, and you can switch the programming language or format of the examples with the tabs in the top right (where available).
+
+This is also intended to be an open doc, in that when developers create new features, they will be able to add any documentation here as well.

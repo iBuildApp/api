@@ -136,7 +136,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                                          | Description                                                                                        |
 |-----------|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| status    | String from list: SUCCESS, ERROR, NOT-MODIFIED                      | Operation result successful / execution error / data hasn’t been modified on the server from last request |
+| status    | String from list: SUCCESS, ERROR, NOT-MODIFIED                | Operation result successful / execution error / data hasn’t been modified on the server from last request |
 | message   | String                                                        | Error description or successful info message                                                       |
 | data      | JSON String with array of time_entry records for current user | Data for showing in the table part                                                                 |
 | timestamp | Integer                                                       | Current server Unix timestamp                                                                      |             |
@@ -211,7 +211,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                     | Description                                                                                        |
 |-----------|------------------------------------------|----------------------------------------------------------------------------------------------------|
-| status    | String from list: SUCCESS: ERROR, NOT-MODIFIED | Operation resultsuccessful executionerrordata hasn’t been modified on the server from last request |
+| status    | String from list: SUCCESS: ERROR, NOT-MODIFIED | Operation result successful / execution error / data hasn’t been modified on the server from last request |
 | message   | String                                   | Error description or successful info message                                                       |
 | data      | Array packed into JSON string            | JSON string with array of time_entry and other records for current user                            |
 | timestamp | Int                                      | Current server Unix timestamp                                                                      |
@@ -368,7 +368,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields                  |
 
@@ -414,7 +414,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                          | ID of the new user                           |
 
@@ -462,7 +462,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Users
@@ -521,7 +521,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -560,7 +560,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## <ins>**GROUP**</ins>
@@ -608,7 +608,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | Group object with all fields or empty object |
 
@@ -650,7 +650,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID created group                             |
 
@@ -693,7 +693,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Groups
@@ -741,7 +741,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                         | Description                                        |
 |-----------|----------------------------------------------|----------------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                       | Error description or successful info message       |
 | data      | Array of group objects packed to JSON string | Group objects array with all fields or empty array |
 
@@ -784,7 +784,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID created group                             |
 
@@ -825,7 +825,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID created group                             |
 
@@ -871,7 +871,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Array of User                |                                              |
 
@@ -910,7 +910,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## <ins>**CLIENT**</ins>
@@ -955,7 +955,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                   |
 |-----------|------------------------------|-----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message  |
 | data      | Object packed to JSON string | Client object with all fields or empty object |
 
@@ -1003,7 +1003,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                          | New client id                                |
 
@@ -1049,7 +1049,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Clients
@@ -1097,7 +1097,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                         | Description                                         |
 |-----------|----------------------------------------------|-----------------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                       | Error description or successful info message        |
 | data      | Array of group objects packed to JSON string | Client objects array with all fields or empty array |
 
@@ -1136,7 +1136,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## <ins>**COMMENT**</ins>
@@ -1186,7 +1186,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -1230,7 +1230,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID of created comment                        |
 
@@ -1269,7 +1269,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Comments
@@ -1322,7 +1322,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -1361,7 +1361,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## <ins>**INVOICE**</ins>
@@ -1409,7 +1409,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -1454,7 +1454,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Update Invoice
@@ -1496,7 +1496,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Set Invoice Status (Paid)
@@ -1536,7 +1536,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Invoices
@@ -1584,7 +1584,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                   | Description                                  |
 |-----------|----------------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                 | Error description or successful info message |
 | data      | Array of objects packed to JSON string | User object with all fields or empty object  |
 
@@ -1624,7 +1624,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## <ins>**TASK**</ins>
@@ -1662,7 +1662,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -1706,7 +1706,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID of created task                           |
 
@@ -1746,7 +1746,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Set Task Status
@@ -1781,7 +1781,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Tasks
@@ -1832,7 +1832,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                   | Description                                  |
 |-----------|----------------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                 | Error description or successful info message |
 | data      | Array of objects packed to JSON string | Task objects with all fields or empty        |
 
@@ -1867,7 +1867,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Add User to Task
@@ -1907,7 +1907,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID of created task                           |
 
@@ -1948,7 +1948,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                      | ID of created task                           |
 
@@ -1983,7 +1983,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## <ins>**PROJECT**</ins>
@@ -2030,7 +2030,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -2083,7 +2083,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                          | New project id                               |
 
@@ -2135,7 +2135,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Projects
@@ -2188,7 +2188,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -2227,7 +2227,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 <!-- ## **SCHEDULE**
@@ -2418,7 +2418,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -2466,7 +2466,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | id        | Integer                          | ID of the new Rate entity                    |
 
@@ -2511,7 +2511,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Rates
@@ -2565,7 +2565,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -2604,7 +2604,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 <!-- ## **TASK HISTORY**
@@ -2758,7 +2758,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
 
@@ -2798,7 +2798,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Search Time Entries
@@ -2858,7 +2858,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Update Time Entry
@@ -2901,7 +2901,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Delete Time Entry
@@ -2939,7 +2939,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                         | Description                                  |
 |-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
 ## Get Status History of Time Entry
@@ -2996,7 +2996,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                                  | Description                                             |
 |-----------|---------------------------------------|---------------------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation resultsuccessful / executionerror    |
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                | Error description or successful info message            |
 | data      | Array of object packed to JSON string | Approval History object with all fields or empty object |
 
