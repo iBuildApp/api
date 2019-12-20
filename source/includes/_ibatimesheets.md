@@ -1,5 +1,4 @@
 # iBuildApp Timesheets
-
 ## <ins>**INTRO**</ins>
 
 Basic API for registering/authorizing a user, getting dashboard data and user history, starting/stopping time tracking, and adding new time sheet entries.
@@ -288,7 +287,7 @@ Token in header request
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
-## Add New Timesheet Entry
+<!-- ## Add New Timesheet Entry
 
 > Request body (application/json):
 
@@ -323,7 +322,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-
+-->
 ## <ins>**USER**</ins>
 
 User API for iBuildApp Timesheets, handling getting user information, creating/deleting/updating a user, and searching for user(s)

@@ -12,7 +12,8 @@ toc_footers:
 includes:
 # Vertical Solutions
   - ibatimesheets
-# Widgets (coming soon)
+# Widgets
+  - widgets
 
 # General
   - errors
