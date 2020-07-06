@@ -81,6 +81,460 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
 | token     | String                        | Auth token of user session. Will be used to sign every next request.    |
 | status    | String from list: ACTIVE, PENDING | User status active / pending activation (Unable to login and use the system) |
 
+## <ins>**USER**</ins>
+
+User API for iBuildApp Timesheets, handling getting user information, creating/deleting/updating a user, and searching for user(s)
+
+## Get User Info
+
+> Request body (application/json):
+
+```json
+{
+	"user_id": 1
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+   "status": "SUCCESS",
+   "data": {
+       "id": 1,
+       "email": "test@test.com",
+       "first_name": "John",
+       "last_name": "Doe",
+       "sex": "male",
+        "position": "Manager",
+        "hourly_rate": 5.5,
+        "roles": [
+          "ROLE_USER"
+        ],
+        "created": 1583905200,
+        "updated": 1583905200,
+        "exported": 1583905200,
+        "activated": true,
+        "settings": [
+          {}
+        ],
+        "picture": "url_to_user_avatar",
+        "paid_hours": 0,
+        "unapproved_hours": 0,
+        "teams": [
+          0
+        ],
+        "notes": "description",
+        "birth_date": "1988-11-22"
+   }
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+```json
+{
+     "status": "ERROR",
+     "message": "Auth token not specified or incorrect.",
+     "error_code": 9
+}
+```
+
+> 404 User not found. Response body (application/json):
+```json
+{
+     "status": "ERROR",
+      "message": "User not found.",
+      "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/user`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                                           |
+|-----------|---------|-------------------------------------------------------|
+| user_id   | Integer | User ID. If not specified, current user’s id is used. |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| data      | Object packed to JSON string | User object with all fields                  |
+
+## Create New User
+
+> Request body (application/json):
+
+```json
+{
+    "email": "test2@test.com",
+    "password": "string",
+     "first_name": "John",
+     "last_name": "Doe",
+     "sex": "male",
+     "position": "Manager",
+     "hourly_rate": 10.5,
+     "settings": [
+        {}
+      ],
+     "notes": "string",
+     "birth_date": "1988-11-22"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+   "status": "SUCCESS",
+   "message": "Successfully created.",
+   "id": 2
+}
+```
+
+> 401 Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+    "message": "Auth token not specified or incorrect.",
+    "error_code": 9
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/user/create`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description |
+|------------|----------------|-------------|
+| email      | String (*Required*) |             |
+| password   | String         |             |
+| first_name | String         |             |
+| last_name  | String         |             |
+| sex        | String         | male,female |
+| hourly_rate | Float         |             |
+| settings   | Array          |             |
+| notes      | String         |             |
+| birth_date | String         |  YYYY-MM-DD |
+| position   | String         |             |
+| is_active  | Boolean        |             |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| id        | Integer                          | ID of the new user                           |
+
+## Update User
+
+> Request body (application/json):
+
+```json
+{
+	"user_id": 2,
+	"first_name": "Jack"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+   "status": "SUCCESS",
+   "message": "Successfully updated."
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+> 404 User not found. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+    "message": "User not found.",
+    "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/user/update`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type    | Description                                           |
+|------------|---------|-------------------------------------------------------|
+| user_id    | Integer | User ID. If not specified, current user’s id is used. |
+| email      | String  |                                                       |
+| password   | String  | 8< password <15                                       |
+| first_name | String  |                                                       |
+| last_name  | String  |                                                       |
+| sex        | String  |   male, female                                        |
+| birth_date | String  |   YYYY-MM-DD                                          |
+| position   | String  |                                                       |
+| settings   | Array   |                                                       |
+| is_active  | Boolean |                                                       |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+
+## Search Users
+
+> Request body (application/json):
+
+```json
+{
+	"email": "test"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+   "status": "SUCCESS",
+   "message": "2 user(s) found.",
+   "data": [
+       {
+           "id": 1,
+           "email": "test@test.com",
+           "first_name": "John",
+           "last_name": "Doe"
+       },
+       {
+           "id": 2,
+           "email": "test2@test.com",
+           "first_name": "Jack",
+           "last_name": "Smith"
+       }
+   ],
+  "count": 2
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/user/search`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type    | Description |
+|------------|---------|-------------|
+| user_id    | Integer | User ID     |
+| email      | String  |             |
+| first_name | String  |             |
+| last_name  | String  |             |
+| position   | String  |             |
+| is_active  | Boolean |             |
+| limit      | Integer     |             |
+| offset     | Integer     |             |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| data      | Object packed to JSON string | User object with all fields or empty object  |
+| count     | Integer | Count of Objects |
+
+## Search Users with Grouping
+
+> Request body (application/json):
+
+```json
+{
+    "group_by": "is_active",
+    "order": "asc"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "message": "1 group(s) found.",
+  "data": {
+    "groups": [
+      {
+        "value": true,
+        "count": 1,
+        "items": [
+          {
+            "id": 0,
+            "email": "email@domain.com",
+            "first_name": "John",
+            "last_name": "Smith",
+            "sex": "male",
+            "position": "Manager",
+            "hourly_rate": 5.1,
+            "roles": [
+              "ROLE_USER"
+            ],
+            "created": 1583905200,
+            "updated": 1583905200,
+            "exported": 1583905200,
+            "activated": true,
+            "settings": [
+              {}
+            ],
+            "picture": "url_to_user_avatar",
+            "paid_hours": 0,
+            "unapproved_hours": 0,
+            "teams": [
+              0
+            ],
+            "notes": "notes",
+            "birth_date": "1988-11-22"
+          }
+        ]
+      }
+    ]
+  },
+  "count": 1
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/user/search`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type    | Description |
+|------------|---------|-------------|
+| user_id    | Integer | User ID     |
+| email      | String  |             |
+| first_name | String  |             |
+| last_name  | String  |             |
+| position   | String  |             |
+| is_active  | Boolean |             |
+| group_by   | String |   field for grouping          |
+| order      | String |  (asc, desc) -  sorting order for grouped field          |
+| limit      | Integer     |             |
+| offset     | Integer     |             |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| data      | Object packed to JSON string | User object with all fields or empty object  |
+| count     | Integer | Count of Objects |
+
+## Delete User
+
+> Request body (application/json):
+
+```json
+{
+	"user_id": 2
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+   "status": "SUCCESS",
+   "message": "Successfully deleted."
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+> 404 User not found. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+    "message": "User not found.",
+    "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/user/delete`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                                           |
+|-----------|---------|-------------------------------------------------------|
+| user_id   | Integer | User ID. If not specified, current user’s id is used. |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+
 ## Get User Dashboard Data
 
 > Request body (application/json):
@@ -92,7 +546,7 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
@@ -103,18 +557,48 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
            {
                "id": 1,
                "name": "testTask",
-               "status": "in-progress"
+               "status": "in-progress",
+               "project": 1,   
+               "duration": 10,
+               "users": [
+                 0
+               ]
            }
        ],
        "current_time_entry": {
            "id": 3,
            "user_id": 1,
            "task_id": 1,
+           "schedule_id": 1,
            "status": "in-progress",
-           "start_time": "2019-08-13 12:04:03"
+           "start_time": 1565687043,
+            "payment_status": "pending",
+            "breaks": 2,
+            "comments": "",
+            "duration": 10
        }
    },
    "timestamp": 1565954217
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+> 404 User not found. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+    "message": "User not found.",
+    "error_code": 5
 }
 ```
 
@@ -154,7 +638,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
@@ -173,20 +657,49 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
        "tasks": {
            "1": {
                "id": 1,
-               "project_id": 2,
+               "project": 2,
                "name": "Test task 1",
-               "status": "in-progress",
+               "status": "in-progress"
            }
        },
+        "users": {
+           "1": {
+               "id": 1,
+               "first_name": "John",
+               "last_name": "Smith",
+               "picture": "url_to_user_avatar"
+           }
+               },
        "projects": {
            "2": {
                "id": 2,
                "name": "Test project 1",
-               "status": "in-progress",
+               "status": "in-progress"
            }
        }
    },
-   "timestamp": 1565954217
+  "count": 1,
+  "timestamp": 1565954217
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+> 404 User not found. Response body (application/json):
+
+```json
+{
+   "status": "ERROR",
+    "message": "User not found.",
+    "error_code": 5
 }
 ```
 
@@ -214,353 +727,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | message   | String                                   | Error description or successful info message                                                       |
 | data      | Array packed into JSON string            | JSON string with array of time_entry and other records for current user                            |
 | timestamp | Int                                      | Current server Unix timestamp                                                                      |
-
-## Start Time Tracking
-
-> Request body (application/json):
-
-```json
-{
-	"task_id":1
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Starteed."
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/user/create`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter | Type    | Description |
-|-----------|---------|-------------|
-| task_id   | Integer | Task id     |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-
-## Stop Time Tracking
-
-> Request body (application/json):
-
-```json
-Token in header request
-```
-
-> Response body (application/json):
-
-```json
-{
-  "status": "SUCCESS",
-  "message": "Stopped."
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/ts/stop`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-Token in header request
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-
-<!-- ## Add New Timesheet Entry
-
-> Request body (application/json):
-
-```json
-
-```
-
-> Response body (application/json):
-
-```json
-
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/ts/add-time-entry`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter  | Type                   | Description                |
-|------------|------------------------|----------------------------|
-| user_id    | Integer | GUID (*Required*)| User ID                    |
-| start_time | Datetime (*Required*)       | Period start date and time |
-| end_time   | Datetime (*Required*)       | Period end date and time   |
-| comment    | String                 | comment                    |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
--->
-## <ins>**USER**</ins>
-
-User API for iBuildApp Timesheets, handling getting user information, creating/deleting/updating a user, and searching for user(s)
-
-## Get User Info
-
-> Request body (application/json):
-
-```json
-{
-	"user_id": 1
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "data": {
-       "id": 1,
-       "email": "test@test.com",
-       "first_name": "John",
-       "last_name": "Doe"
-   }
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/user/create`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter | Type    | Description                                           |
-|-----------|---------|-------------------------------------------------------|
-| user_id   | Integer | User ID. If not specified, current user’s id is used. |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields                  |
-
-## Create New User
-
-> Request body (application/json):
-
-```json
-{
-	"email": "test2@test.com",
-	"first_name": "John",
-	"last_name": "Smith"
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully created.",
-   "id": 2
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/user/create`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter  | Type           | Description |
-|------------|----------------|-------------|
-| email      | String (*Required*) |             |
-| first_name | String         |             |
-| last_name  | String         |             |
-| position   | String         |             |
-| is_active  | Boolean           |             |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| id        | Integer                          | ID of the new user                           |
-
-## Update User
-
-> Request body (application/json):
-
-```json
-{
-	"user_id": 2,
-	"first_name": "Jack"
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully updated."
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/user/update`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter  | Type    | Description                                           |
-|------------|---------|-------------------------------------------------------|
-| user_id    | Integer | User ID. If not specified, current user’s id is used. |
-| email      | String  |                                                       |
-| password   | String  | 8< password <15                                       |
-| first_name | String  |                                                       |
-| last_name  | String  |                                                       |
-| sex        | String  |                                                       |
-| birth_date | Date    |                                                       |
-| position   | String  |                                                       |
-| is_active  | Boolean |                                                       |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-
-## Search Users
-
-> Request body (application/json):
-
-```json
-{
-	"email": "test"
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "2 user(s) found.",
-   "data": [
-       {
-           "id": 1,
-           "email": "test@test.com",
-           "first_name": "John",
-           "last_name": "Doe"
-       },
-       {
-           "id": 2,
-           "email": "test2@test.com",
-           "first_name": "Jack",
-           "last_name": "Smith"
-       }
-   ]
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/user/search`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter  | Type    | Description |
-|------------|---------|-------------|
-| user_id    | Integer | User ID     |
-| email      | String  |             |
-| first_name | String  |             |
-| last_name  | String  |             |
-| position   | String  |             |
-| is_active  | Boolean |             |
-| limit      | Integer     |             |
-| offset     | Integer     |             |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields or empty object  |
-
-## Delete User
-
-> Request body (application/json):
-
-```json
-{
-	"user_id": 2
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully deleted."
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/user/delete`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter | Type    | Description                                           |
-|-----------|---------|-------------------------------------------------------|
-| user_id   | Integer | User ID. If not specified, current user’s id is used. |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
 
 ## <ins>**GROUP**</ins>
 
@@ -2726,23 +2892,296 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 Time Entry API for iBuildApp Timesheets, handling getting time entry information, creating/deleting/updating a time entry, getting time entry status history, setting time entry status, and searching for time entries.
 
+## Start Time Tracking
+
+> Request body (application/json):
+
+```json
+{
+	"task_id":18,
+    "location":[-37.270245, -119.989356],
+    "comment":"my comment"
+}
+```
+
+> 200 Response body (application/json):
+```json
+{
+   "status": "SUCCESS",
+   "message": "Starteed."
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/ts/start`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description |
+|-----------|---------|-------------|
+| task_id   | Integer | Task id     |
+| location  | Array     | Location [latitude,longitude]     |
+| comment   | String    |    |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message: "Successfully started.","Task not found.","Found started TimeEntry.”|
+
+## Stop Time Tracking
+
+> Request body (application/json):
+
+```json
+{
+    "task_id":18,
+    "comment":"my comment2",
+    "location":[-37.270245, -119.989356]
+}
+
+```
+
+> 200 Response body (application/json):
+```json
+{
+  "status": "SUCCESS",
+  "message": "Stopped."
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/ts/stop`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description |
+|-----------|---------|-------------|
+| task_id   | Integer | Task id     |
+| location  | Array     | Location [latitude,longitude]     |
+| comment   | String    |    |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+
+## Create New Timesheet Entry
+
+> Request body (application/json):
+
+```json
+{
+    "user_id":1,
+    "task_id":18,
+    "start_time":1565687043,
+    "end_time":1565688043,
+    "location":[-37.270245, -119.989356],
+    "comment":"my comment"
+}
+```
+
+> 200 Response body (application/json):
+```json
+{
+  "status": "SUCCESS",
+  "message": "Successfully created.",
+  "id": 2
+}
+```
+
+> 401 Unauthorized. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+> 404 Task found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Task not found.",
+    "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/ts/create`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type                   | Description                |
+|------------|------------------------|----------------------------|
+| user_id    | Integer (*Required*)| User ID                    |
+| task_id    | Integer | Task ID                    |
+| start_time | Timestamp      | Period start date and time. Current Timestamp if empty |
+| end_time   | Timestamp       | Period end date and time   |
+| comment    | String                 | comment                    |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| id        | Integer                       | ID of created TimeEntry |
+
 ## Get Time Entry Info
 
 > Request body (application/json):
 
 ```json
-
+{
+  "time_entry_id": 1,
+  "with": [
+    "users",
+    "projects",
+    "comments",
+    "breaks"
+  ]
+}
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
-
+{
+  "status": "SUCCESS",
+  "message": "1 time entries found.",
+  "data": {
+    "time_entry": {
+      "id": 0,
+      "user_id": 0,
+      "task_id": 0,
+      "start_time": 1583905200,
+      "end_time": 1583905200,
+      "duration": 600,
+      "approve_date": 1583905200,
+      "breaks": 1,
+      "status": "in-progress"
+    },
+    "users": {
+      "0": {
+        "id": 0,
+        "first_name": "John",
+        "last_name": "Smith",
+        "hourly_rate": 0,
+        "picture": "url_user_avatar",
+        "birth_date": "1988-11-22"
+      }
+    },
+    "breaks": [
+      {
+        "id": 0,
+        "start_time": 1583905200,
+        "end_time": 1583905800,
+        "duration": 600
+      }
+    ],
+    "comments": [
+      {
+        "id": 0,
+        "commentator": 0,
+        "content": "content",
+        "date": 1566402943
+      }
+    ],
+    "commentators": {
+      "0": {
+        "id": 0,
+        "first_name": "John",
+        "last_name": "Smith",
+        "picture": "url_user_avatar"
+      }
+    },
+    "tasks": {
+      "0": {
+        "id": 0,
+        "project": 0,
+        "name": "Task #0",
+        "description": "description",
+        "estimate_hours": 10.1,
+        "duration": 111,
+        "status": "new"
+      }
+    },
+    "projects": {
+      "0": {
+        "id": 0,
+        "name": "Project name",
+        "description": "description",
+        "client_id": 0,
+        "duration_unit": "minutes",
+        "status": "new",
+        "planned_start_date": 0,
+        "actual_start_date": 0,
+        "planned_end_date": 0,
+        "actual_end_date": 0,
+        "estimated_duration": 10,
+        "actual_duration": 10,
+        "tasks": [
+          0
+        ]
+      }
+    },
+    "customers": {
+      "0": {
+        "id": 0,
+        "name": "Customer #0",
+        "status": "active"
+      }
+    }
+  },
+  "count": 1
+}
 ```
+
+> 401 Unauthorized. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
 
 ### HTTP Request
 
-`POST /timesheets/time_entry`
+`POST /api/{APP_CODE}/ts/get`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
@@ -2750,8 +3189,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter     | Type           | Description |
 |---------------|----------------|-------------|
-| token         | String (*Required*) | Auth token  |
-| time_entry_id | Integer        | ID          |
+| time_entry_id | Integer  (*Required*)       | TimeEntry ID          |
 
 ### Response data: JSON string with the following elements
 
@@ -2759,39 +3197,60 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields or empty object  |
+| data      | Object packed to JSON string | TimeEntry Object with all fields or empty object  |
 
-## Create New Time Entry
+## Update Time Entry
 
 > Request body (application/json):
 
 ```json
-
+{
+	"time_entry_id": 1,
+	"task_id": 2
+}
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
+{
+   "status": "SUCCESS",
+   "message": "Successfully updated."
+}
+```
 
+> 401 Unauthorized. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Auth token not specified or incorrect.",
+   "error_code": 9
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+     "status": "ERROR",
+      "message": "TimeEntry  not found.",
+      "error_code": 5
+}
 ```
 
 ### HTTP Request
 
-`POST /timesheets/time_entry/create`
+`POST /api/{app_path}/ts/update`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
 
-| Parameter      | Type              | Description |
-|----------------|-------------------|-------------|
-| token          | String (*Required*)    | Auth token  |
-| task_id        | Integer (*Required*)   |             |
-| schedule_id    | Integer (*Required*)   |             |
-| start_datetime | Timestamp (*Required*) |             |
-| end_datetime   | Timestamp         |             |
-| status         | Integer (*Required*)   |             |
-| payment_status | Integer (*Required*)   |             |
+| Parameter      | Type                                | Description |
+|----------------|-------------------------------------|-------------|
+| time_entry_id  | Integer (*Required*)                     |             |
+| task_id        | Integer                             |             |
+| start_datetime | Timestamp                           |             |
+| end_datetime   | Timestamp                           |             |
 
 ### Response data: JSON string with the following elements
 
@@ -2799,6 +3258,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
+
 
 ## Search Time Entries
 
@@ -2852,49 +3312,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | end_datetime   | Timestamp                           |                     |
 | status         | String from list: in-progress, done |                     |
 | payment_status | String from list: pending, payed    |                     |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-
-## Update Time Entry
-
-> Request body (application/json):
-
-```json
-{
-	"time_entry_id": 1,
-	"status": "done"
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully updated."
-}
-```
-
-### HTTP Request
-
-`POST /api/{app_path}/ts/update`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter      | Type                                | Description |
-|----------------|-------------------------------------|-------------|
-| time_entry_id  | Integer (*Required*)                     |             |
-| start_datetime | Timestamp                           |             |
-| end_datetime   | Timestamp                           |             |
-| status         | String from list: in-progress, done |             |
-| payment_status | String from list: pending, payed    |             |
 
 ### Response data: JSON string with the following elements
 
