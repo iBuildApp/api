@@ -743,17 +743,27 @@ Group/Team API for iBuildApp Timesheets, handling getting group/team information
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
-   "status": "SUCCESS",
-   "message": "Successfully found.",
-   "data": {
-       "id": 1,
-       "app_id": 1,
-       "name": "nameTest"
-   }
+    "status": "SUCCESS",
+    "message": "Successfully found.",
+    "data": {
+        "id": 1,
+        "name": "Group 1",
+        "status": "active",
+        "pay_rate": 10
+    }
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Group not found.",
+    "error_code": 5
 }
 ```
 
@@ -780,16 +790,13 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Create New Group
 
 > Request body (application/json):
-
 ```json
 {
-	"name":"nameTest",
-	"app_id":1
+	"name":"nameTest"
 }
 ```
 
 > Response body (application/json):
-
 ```json
 {
    "status": "SUCCESS",
@@ -809,7 +816,10 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | Parameter | Type            | Description |
 |-----------|-----------------|-------------|
 | name      | String (*Required*)  |             |
-| app_id    | Integer (*Required*) |             |
+| description | String     |             |
+| notes     | String          |             |
+| pay_rate  | Float           |             |
+| status    | Boolean         |             |
 
 ### Response data: JSON string with the following elements
 
@@ -822,21 +832,28 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Update Group
 
 > Request body (application/json):
-
 ```json
 {
-	"group_id": 1,
-  "name": ”New_name”,
-  "description": ”New_description”
+    "group_id": 1,
+    "name": "New_name",
+    "description": "New_description"
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully updated."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Group not found.",
+    "error_code": 5
 }
 ```
 
@@ -851,8 +868,10 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | Parameter   | Type            | Description     |
 |-------------|-----------------|-----------------|
 | group_id    | Integer (*Required*) | Group ID        |
-| name        | String (*Required*)  | new name        |
-| description | String          | new description |
+| name        | String (*Required ?*)  | Must be new name        |
+| description | String (*Required ?*)          | OR new description |
+| notes       | String          |                 |
+| status      | String of list: active, inactive          |                 |
 
 ### Response data: JSON string with the following elements
 
@@ -875,15 +894,17 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ```json
 {
-   "status": "SUCCESS",
-   "message": "1 group(s) found.",
-   "data": [
-       {
-           "id": 1,
-           "app_id": 1,
-           "name": "nameTest"
-       }
-   ]
+    "status": "SUCCESS",
+    "message": "1 group(s) found.",
+    "data": [
+        {
+            "id": 1,
+            "name": "Group 1",
+            "status": "active",
+            "pay_rate": 10
+        }
+    ],
+    "count": 1
 }
 ```
 
@@ -894,13 +915,15 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
+Must be at least one of parameters: group_id, name, keyword
 
 | Parameter | Type    | Description |
 |-----------|---------|-------------|
-| group_id  | Integer | Group ID    |
-| name      | String  |             |
-| limit     | Integer     |             |
-| offset    | Integer     |             |
+| group_id  | Integer (*Required ?*)| Group ID    |
+| name      | String (*Required ?*)  |             |
+| keyword   | String (*Required ?*)  |  Find in name           |
+| limit     | Integer |             |
+| offset    | Integer |             |
 
 ### Response data: JSON string with the following elements
 
@@ -909,6 +932,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                       | Error description or successful info message       |
 | data      | Array of group objects packed to JSON string | Group objects array with all fields or empty array |
+| count     | Integer                      |                                              |
 
 ## Add User to Group
 
@@ -917,17 +941,24 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```json
 {
 	"group_id":1,
-	"user_id":2,
-  "role":”ROLE_USER”
+	"user_id":2
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully added."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Group not found.",
+    "error_code": 5
 }
 ```
 
@@ -943,7 +974,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|-----------------|---------------------------|
 | group_id  | Integer (*Required*) |                           |
 | user_id   | Integer (*Required*) |                           |
-| role      | user role       | Default = “ROLE_EXECUTOR” |
 
 ### Response data: JSON string with the following elements
 
@@ -951,12 +981,10 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-| id        | Integer                      | ID created group                             |
 
 ## Delete User from Group
 
 > Request body (application/json):
-
 ```json
 {
 	"group_id":1,
@@ -964,8 +992,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
    "status": "SUCCESS",
@@ -973,6 +1000,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Group not found.",
+    "error_code": 5
+}
+```
 ### HTTP Request
 
 `POST /api/{app_path}/group/delete_user`
@@ -992,7 +1027,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-| id        | Integer                      | ID created group                             |
 
 ## Get Users in Group
 
@@ -1004,19 +1038,42 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
-   "status": "SUCCESS",
-   "message": "1 user(s) found.",
-   "data": [
-       {
-           "id": 2,
-           "ts_user": 1,
-           "role": "ROLE_EXECUTOR"
-       }
-   ]
+    "status": "SUCCESS",
+    "message": "1 user(s) found.",
+    "data": [
+        {
+            "id": 111,
+            "email": "222@222.ru",
+            "first_name": "222",
+            "last_name": "2222",
+            "hourly_rate": 0,
+            "roles": ["ROLE_USER"],
+            "created": "1591787712",
+            "exported": "946684800",
+            "updated": "1593163617",
+            "activated": true,
+            "settings": {
+                "datetime_format": "d/m/Y h:ia"
+            },
+            "paid_hours": 0,
+            "unapproved_hours": 4.01,
+            "teams": [1],
+            "birth_date": "1990-05-01"
+        }
+    ],
+    "count": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Group not found.",
+    "error_code": 5
 }
 ```
 
@@ -1038,7 +1095,8 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-| data      | Array of User                |                                              |
+| data      | Array of User Object         |                                              |
+| count     | Integer                      |                                              |
 
 ## Delete Group
 
@@ -1050,12 +1108,21 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully deleted."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Group not found.",
+   "error_code": 5
 }
 ```
 
@@ -1069,7 +1136,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type                   | Description |
 |-----------|------------------------|-------------|
-| group_id  | Integer | GUIDRequired | Group ID    |
+| group_id  | Integer (*Required*)   | Group ID    |
 
 ### Response data: JSON string with the following elements
 
@@ -1371,231 +1438,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
-## <ins>**COMMENT**</ins>
-
-Comment API for iBuildApp Timesheets, handling getting comment information, creating/deleting/updating a comments, and searching for comments.
-
-
-## Get Comment Info
-
-> Request body (application/json):
-
-```json
-{
-	"comment_id":1
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully found.",
-   "data": {
-       "id": 1,
-       "commentator": 1,
-       "task": 1,
-       "content": "text",
-       "date": "2019-08-21T08:21:43+00:00"
-   }
-}
-```
-
-### HTTP Request
-
-`POST /api/{app_path}/comment`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter  | Type    | Description |
-|------------|---------|-------------|
-| comment_id | Integer | Comment ID  |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields or empty object  |
-
-## Create New Comment
-
-> Request body (application/json):
-
-```json
-{
-  "task_id":1,   // (or invoice_id, or time_entry_id)
-  "content": "Example Text String"
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully created.",
-   "id": 2
-}
-```
-
-### HTTP Request
-
-`POST /api/{app_path}/comment/create`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter     | Type            | Description                         |
-|---------------|-----------------|-------------------------------------|
-| task_id       | Integer (*Required*) | One of these options is required    |
-| invoice_id    | Integer (*Required*) | One of these options is required    |
-| time_entry_id | Integer (*Required*) | One of these options is required    |
-| content       | String (*Required*)  |                                     |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| id        | Integer                      | ID of created comment                        |
-
-## Update Comment
-
-> Request body (application/json):
-
-```json
-
-```
-
-> Response body (application/json):
-
-```json
-
-```
-
-### HTTP Request
-
-`POST /timesheets/comment/update`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter     | Type            | Description |
-|---------------|-----------------|-------------|
-| token         | String (*Required*)  | Auth token  |
-| comment_id    | Integer (*Required*) |             |
-| task_id       | Integer (*Required*) |             |
-| invoice_id    | Integer (*Required*) |             |
-| time_entry_id | Integer (*Required*) |             |
-| content       | String            |             |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-
-## Search Comments
-
-> Request body (application/json):
-
-```json
-{
-	"task_id":1
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "1 comment(s) found.",
-   "data": [
-       {
-           "id": 1,
-           "commentator": 1,
-           "task": 1, // (or invoice, or time_entry)
-           "content": "text",
-           "date": "2019-08-20T08:02:07+00:00"
-       }
-   ]
-}
-```
-
-### HTTP Request
-
-`POST /api/{app_path}/comment/search`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter      | Type    | Description                |
-|----------------|---------|----------------------------|
-| commentator_id | Integer | User ID                    |
-| task_id        | Integer |                            |
-| invoice_id     | Integer |                            |
-| time_entity_id | Integer |                            |
-| content        | String  | if needed search with text |
-| limit          | Integer     |                            |
-| offset         | Integer     |                            |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields or empty object  |
-
-## Delete Comment
-
-> Request body (application/json):
-
-```json
-{
-	"comment_id":1
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-   "status": "SUCCESS",
-   "message": "Successfully deleted."
-}
-```
-
-### HTTP Request
-
-`POST /api/{app_path}/comment/delete`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter  | Type    | Description |
-|------------|---------|-------------|
-| comment_id | Integer | Comment ID  |
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-
 ## <ins>**INVOICE**</ins>
 
 Invoice API for iBuildApp Timesheets, handling getting invoice information, creating/deleting/updating an invoice, changing invoice status, and searching for invoice(s).
@@ -1614,14 +1456,15 @@ Invoice API for iBuildApp Timesheets, handling getting invoice information, crea
 
 ```json
 {
-   "status": "SUCCESS",
-   "data": {
-       "id": 1,
-       "due_date": "2019-08-14T12:14:27+00:00",
-       "payed_date": "2019-08-14T12:14:34+00:00",
-       "amount": 30.5,
-       "status": 6
-   }
+    "status": "SUCCESS",
+    "message": "Successfully found.",
+    "data": {
+        "id": 1,
+        "due_date": "1587340800",
+        "payed_date": "1587340800",
+        "amount": 100,
+        "status": "paid"
+    }
 }
 ```
 
@@ -1643,7 +1486,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields or empty object  |
+| data      | Object packed to JSON string | Invoice object with all fields or empty object  |
 
 ## Create New Invoice
 
@@ -1656,13 +1499,22 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully created.",
    "id": 2
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Client not found.",
+   "error_code": 5
 }
 ```
 
@@ -1678,9 +1530,9 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|--------------------------|-------------------------------------------------|
 | client_id | Integer (*Required*)          |                                                 |
 | task_ids  | Array of Integer (*Required*) |                                                 |
-| due_date  | Timestamp (*Required*) ??     | Default = current date / time                   |
-| status    | Integer                  | Initial status. Default = 0 (STATUS_NEW)        |
-| amount    | Float                    |                                                 |
+| due_date  | Timestamp                     | Default = current Timestamp                   |
+| status    | String of: new, paid          | Initial status. Default = 'new'       |
+| amount    | Float                         |                                                 |
 
 ### Response data: JSON string with the following elements
 
@@ -1688,6 +1540,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
+| id        | Integer                      | ID of created invoice |
 
 ## Update Invoice
 
@@ -1700,12 +1553,21 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully updated."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Invoice not found.",
+   "error_code": 5
 }
 ```
 
@@ -1721,7 +1583,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |------------|-----------------|-------------|
 | invoice_id | Integer (*Required*) |             |
 | due_date   | Timestamp       |             |
-| status     | Integer         |             |
+| status     | String of: new, paid         |             |
 | amount     | Float           |             |
 
 ### Response data: JSON string with the following elements
@@ -1732,18 +1594,17 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | message   | String                       | Error description or successful info message |
 
 ## Set Invoice Status (Paid)
+*Set payed this invoice and all his timeEntries. ADMIN_ACCESS_ONLY*
 
 > Request body (application/json):
-
 ```json
 {
 	"invoice_id":2,
-	"payed_date":"2019-08-08 13:30:00"
+	"payed_date":1587081600
 }
 ```
 
 > Response body (application/json):
-
 ```json
 {
    "status": "SUCCESS",
@@ -1762,7 +1623,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | Parameter  | Type             | Description |
 |------------|------------------|-------------|
 | invoice_id | Integer (*Required*)  |             |
-| payed_date | Datetime (*Required*) |             |
+| payed_date | Timestamp (*Required*) |             |
 
 ### Response data: JSON string with the following elements
 
@@ -1777,7 +1638,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ```json
 {
-	"client_id":1
+	"client_id":[1]
 }
 ```
 
@@ -1785,16 +1646,18 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ```json
 {
-   "status": "SUCCESS",
-   "message": "1 task(s) found.",
-   "data": [
-       {
-           "id": 1,
-           "due_date": "2019-08-14T12:14:27+00:00",
-           "amount": 30.5,
-           "status": 6
-       }
-   ]
+    "status": "SUCCESS",
+    "message": "1 invoice(s) found.",
+    "data": [
+        {
+            "id": 1,
+            "due_date": "1587340800",
+            "payed_date": "1587340800",
+            "amount": 100,
+            "status": "paid"
+        }
+    ],
+    "count": 1
 }
 ```
 
@@ -1808,7 +1671,9 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type            | Description |
 |-----------|-----------------|-------------|
-| client_id | Integer (*Required*) |             |
+| client_id | Array of Integer (*Required*) |             |
+| due_date  | Timestamp       |  <= due_date           |
+| payed_date| Timestamp       |  <= payed_date           |
 | limit     | Integer             |             |
 | offset    | Integer             |             |
 
@@ -1818,7 +1683,74 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|----------------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                                 | Error description or successful info message |
-| data      | Array of objects packed to JSON string | User object with all fields or empty object  |
+| data      | Array of objects packed to JSON string | Invoice object with all fields or empty object  |
+| count     | Integer                | Count of objects  |
+
+## Search Invoices with Grouping
+
+> Request body (application/json):
+
+```json
+{
+    "client_id":[1],
+    "group_by": "status",
+    "order_by": "asc"
+}
+```
+
+> Response body (application/json):
+
+```json
+{
+    "status": "SUCCESS",
+    "message": "1 group(s) found.",
+    "data": {
+        "groups": [
+            {
+                "value": "paid",
+                "count": 1,
+                "items": [
+                    {
+                        "id": 1,
+                        "due_date": "1587340800",
+                        "payed_date": "1587340800",
+                        "amount": 100,
+                        "status": "paid"
+                    }
+                ]
+            }
+        ]
+    },
+    "count": 1
+}
+```
+
+### HTTP Request
+
+`POST /api/{app_path}/invoice/search_group`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type            | Description |
+|-----------|-----------------|-------------|
+| client_id | Array of Integer (*Required*) |             |
+| due_date  | Timestamp       |  <= due_date           |
+| payed_date| Timestamp       |  <= payed_date           |
+| limit     | Integer             |             |
+| offset    | Integer             |             |
+| group_by  | String                              |   field for grouping          |
+| order_by  | String from list: asc, desc     |  sorting order for grouped field          |  
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                                   | Description                                  |
+|-----------|----------------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                                 | Error description or successful info message |
+| data      | Array of groups of objects packed to JSON string | Invoice object with all fields or empty object  |
+| count     | Integer                | Count of groups  |
 
 ## Delete Invoice
 
@@ -1830,12 +1762,21 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully deleted."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Invoice not found.",
+   "error_code": 5
 }
 ```
 
@@ -1858,6 +1799,127 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
+
+## Add comment to invoice
+
+> Request body (application/json):
+
+```json
+{
+  "invoice_id": 1,
+  "content": "content text"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "id": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Invoice not found.",
+   "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/invoice/add_comment`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                    |
+|-----------|---------|--------------------------------|
+| invoice_id| Integer (*Required*) |                   |
+| content   | String (*Required*)  |                   |
+
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| id        | Integer                      | ID of created comment  |
+
+## Get comments of invoice
+
+> Request body (application/json):
+
+```json
+{
+    "invoice_id": 1,
+    "with": ["users"]
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "comments": [
+      {
+        "id": 0,
+        "commentator": 1,
+        "content": "Comment text",
+        "date": 1566402943
+      }
+    ],
+    "users": {
+      "1": {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "Smith",
+        "picture": "url_to_user_avatar"
+      }
+    }
+  },
+  "count": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Invoice not found.",
+   "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/invoice/comments`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                    |
+|-----------|---------|--------------------------------|
+| invoice_id| Integer (*Required*) |                   |
+| with      | Array of String  |   "users"             |
+
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| data      | Array of Connemt object                      |  |
+| count      | Integer                      | Count of finded comments |
 
 ## <ins>**TASK**</ins>
 
@@ -2632,6 +2694,127 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | data      | Array of entity packed to JSON string |  object with all fields or empty object  |
 | timestamp | Timestamp                     |                       |
 
+## Add comment to task
+
+> Request body (application/json):
+
+```json
+{
+  "task_id": 1,
+  "content": "content text"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "id": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Task not found.",
+   "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/task/add_comment`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                    |
+|-----------|---------|--------------------------------|
+| task_id| Integer (*Required*) |                   |
+| content   | String (*Required*)  |                   |
+
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| id        | Integer                      | ID of created comment  |
+
+## Get comments of task
+
+> Request body (application/json):
+
+```json
+{
+    "task_id": 1,
+    "with": ["users"]
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "comments": [
+      {
+        "id": 0,
+        "commentator": 1,
+        "content": "Comment text",
+        "date": 1566402943
+      }
+    ],
+    "users": {
+      "1": {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "Smith",
+        "picture": "url_to_user_avatar"
+      }
+    }
+  },
+  "count": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Task not found.",
+   "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/task/comments`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                    |
+|-----------|---------|--------------------------------|
+| task_id   | Integer (*Required*) |                   |
+| with      | Array of String  |   "users"             |
+
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| data      | Array of Comment object                      |  |
+| count      | Integer                      | Count of finded comments |
+
 ## <ins>**PROJECT**</ins>
 
 Project API for iBuildApp Timesheets, handling getting project information, creating/deleting/updating a project, and searching for projects.
@@ -2897,105 +3080,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | data      | Array of Object packed to JSON string | objects with all fields or empty object  |
 | count      | Integer | Count of finded objects  |
 
-## Search Projects with Grouping
-
-> Request body (application/json):
-
-```json
-{
-	"name": "test",
-	"limit": 10,
-	"offset": 0,
-    "with": ["tasks" ,"clients"],
-    "group_by": "status"
-}
-```
-
-> Response body (application/json):
-
-```json
-{
-  "status": "SUCCESS",
-  "message": "1 group(s) found.",
-  "data": {
-    "groups": [
-      {
-        "value": "in-progress",
-        "count": 1,
-        "items": [
-          {
-            "id": 0,
-            "name": "Project test name",
-            "description": "description...",
-            "client_id": 0,
-            "duration_unit": "minutes",
-            "status": "new",
-            "planned_start_date": 1565687043,
-            "actual_start_date": 1565687043,
-            "planned_end_date": 1565687043,
-            "actual_end_date": 1565687043,
-            "estimated_duration": 100,
-            "actual_duration": 90,
-            "tasks": [0]
-          }
-        ]
-      }
-    ],
-    "tasks": {
-      "0": {
-        "id": 0,
-        "name": "Task name",
-        "project": 0,
-        "duration": 0,
-        "status": "new",
-        "users": [0]
-      }
-    },
-    "clients": {
-      "0": {
-        "id": 0,
-        "name": "Client name",
-        "status": "active"
-      }
-    }
-  },
-  "count": 1
-}
-```
-
-### HTTP Request
-
-`POST /api/{APP_CODE}/project/search_group`
-
-HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
-
-### Request data: JSON string with the following elements
-
-| Parameter | Type    | Description                    |
-|-----------|---------|--------------------------------|
-| client_id | Integer |                                |
-| name      | String  | if needed search with name     |
-| category  | String  | if needed search with category |
-| description  | String  | if needed search with  |
-| keyword  | String  | Search in name, description, category  |
-| duration_unit  | String from the list:minutes, hours, days, weeks, months, years   | if needed search with duration_unit  |
-| status    | String from list: new, in-progress, cancelled, done  | if needed search with status   |
-| limit     | Integer     |                                |
-| offset    | Integer     |                                |
-| with      | Array[String] from list: tasks, clients |     
-| group_by  | String                              |   field for grouping          |
-| order_by  | String from list: asc, desc     |  sorting order for grouped field          |  
-
-
-### Response data: JSON string with the following elements
-
-| Parameter | Type                         | Description                                  |
-|-----------|------------------------------|----------------------------------------------|
-| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
-| message   | String                       | Error description or successful info message |
-| data      | Array of Object packed to JSON string | objects with all fields or empty object  |
-| count      | Integer | Count of finded groups  |
-
 ## Delete Project
 
 > Request body (application/json):
@@ -3043,147 +3127,298 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 
-<!-- ## **SCHEDULE**
+## **SCHEDULE**
 
 ## Get Schedule Info
 
 > Request body (application/json):
 
 ```json
-
+{
+  "shedule_id": 1
+}
 ```
 
 > Response body (application/json):
 
 ```json
-
+{
+  "status": "SUCCESS",
+  "data": {
+    "id": 1,
+    "name": "Schedule_name",
+    "days_of_week": {
+      "monday": true,
+      "tuesday": true,
+      "wednesday": true,
+      "thursday": true,
+      "friday": true,
+      "saturday": true,
+      "sunday": true
+    },
+    "start_time": "10:00",
+    "end_time": "19:59",
+    "is_holiday": true,
+    "is_overnight": true
+  }
+}
 ```
 
 ### HTTP Request
 
-`POST /api/{APP_CODE}/user/create`
+`POST /api/{APP_CODE}/schedule`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
 
-
+| Parameter  | Type            | Description |
+|------------|-----------------|-------------|
+| schedule_id | Integer (*Required*) | Schedule ID  |
 
 ### Response data: JSON string with the following elements
 
-
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| data      | Object packed to JSON string | Schedule object with all fields or empty object  |
 
 ## Create New Schedule
 
 > Request body (application/json):
 
 ```json
-
+{
+  "name": "Name of schedule",
+  "days_of_week": {
+    "monday": true,
+    "tuesday": true,
+    "wednesday": true,
+    "thursday": true,
+    "friday": true,
+    "saturday": true,
+    "sunday": true
+  },
+  "start_time": "10:00",
+  "end_time": "19:59",
+  "is_holiday": true,
+  "is_overnight": true
+}
 ```
 
 > Response body (application/json):
 
 ```json
-
+{
+  "status": "SUCCESS",
+  "message": "Successfully created.",
+  "id": 0
+}
 ```
 
 ### HTTP Request
 
-`POST /api/{APP_CODE}/user/create`
+`POST /api/{APP_CODE}/schedule/create`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
 
+| Parameter          | Type                                             | Description |
+|--------------------|--------------------------------------------------|-------------|
+| name               | String (*Required*)                              |             |
+| days_of_week       | Array of days (Boolean) (*Required*)             |  "monday": Boolean,"tuesday": Boolean,"wednesday": Boolean,"thursday": Boolean,"friday": Boolean,"saturday": Boolean,"sunday": Boolean           |
+| start_time         | String (*Required*)                              |   (HH:mm)   |
+| end_time           | String (*Required*)                              |   (HH:mm)   |
+| is_holiday         | Boolean  (*Required*)                            |             |
+| is_overnight       | Boolean  (*Required*)                            |             |
 
 
 ### Response data: JSON string with the following elements
 
-
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| id        | Integer                          | New Schedule id                               |
 
 ## Update Schedule
 
 > Request body (application/json):
-
 ```json
-
+{
+  "schedule_id": 1,
+  "name": "Name of schedule",
+  "days_of_week": {
+    "monday": true,
+    "tuesday": true,
+    "wednesday": true,
+    "thursday": true,
+    "friday": true,
+    "saturday": true,
+    "sunday": true
+  },
+  "start_time": "10:00",
+  "end_time": "19:59",
+  "is_holiday": true,
+  "is_overnight": true
+}
 ```
 
-> Response body (application/json):
+> 200 Response body (application/json):
 
 ```json
+{
+  "status": "SUCCESS",
+  "message": "Successfully updated."
+}
+```
 
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Schedule not found.",
+    "error_code": 5
+}
 ```
 
 ### HTTP Request
 
-`POST /api/{APP_CODE}/user/create`
+`POST /api/{APP_CODE}/schedule/update`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
 
+| Parameter          | Type                                             | Description |
+|--------------------|--------------------------------------------------|-------------|
+| schedule_id        | Integer (*Required*)                              |             |
+| name               | String                                            |             |
+| days_of_week       | Array of days (Boolean)             |  "monday": Boolean,"tuesday": Boolean,"wednesday": Boolean,"thursday": Boolean,"friday": Boolean,"saturday": Boolean,"sunday": Boolean           |
+| start_time         | String                                           |   (HH:mm)   |
+| end_time           | String                                          |   (HH:mm)   |
+| is_holiday         | Boolean                                        |             |
+| is_overnight       | Boolean                                    |             |
 
 
 ### Response data: JSON string with the following elements
 
-
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
 
 ## Search Schedules
 
 > Request body (application/json):
-
 ```json
-
+{
+  "name": "test"
+}
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
-
+{
+  "status": "SUCCESS",
+  "message": "1 schedule(s) found.",
+  "data": [
+    {
+      "id": 0,
+      "name": "test name",
+      "days_of_week": {
+        "monday": true,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": true,
+        "friday": true,
+        "saturday": true,
+        "sunday": true
+      },
+      "start_time": "10:00",
+      "end_time": "19:59",
+      "is_holiday": true,
+      "is_overnight": true
+    }
+  ],
+  "count": 1
+}
 ```
+
 
 ### HTTP Request
 
-`POST /api/{APP_CODE}/user/create`
+`POST /api/{APP_CODE}/schedule/search`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
+Must be at least one of parameters: name, keyword
 
+| Parameter          | Type                                             | Description |
+|--------------------|--------------------------------------------------|-------------|
+| name               | String  (*Required ?*)                      |             |
+| keyword            | String  (*Required ?*)                         | search in name      |
+| limit              | Integer                    |                    |
+| offset             | Integer                     |                   |
 
 
 ### Response data: JSON string with the following elements
 
-
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+| data      | Array of objects packed to JSON string | Schedule objects with all fields or empty        |
+| count     | Integer                               | Count of finded objects        |
 
 ## Delete Schedule
 
 > Request body (application/json):
-
 ```json
-
+{
+  "schedule_id": 1
+}
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
+{
+  "status": "SUCCESS",
+  "message": "Successfully deleted."
+}
+```
 
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Schedule not found.",
+    "error_code": 5
+}
 ```
 
 ### HTTP Request
 
-`POST /api/{APP_CODE}/user/create`
+`POST /api/{APP_CODE}/schedule/delete`
 
 HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 ### Request data: JSON string with the following elements
 
+| Parameter          | Type                                             | Description |
+|--------------------|--------------------------------------------------|-------------|
+| schedule_id        | Integer (*Required*)                              |             |
 
 
 ### Response data: JSON string with the following elements
 
- -->
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| message   | String                       | Error description or successful info message |
+
 
 ## <ins>**RATE**</ins>
 
@@ -3199,19 +3434,27 @@ Rate API for iBuildApp Timesheets, handling getting rate information, creating/d
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
     "status": "SUCCESS",
     "data": {
         "id": 1,
         "name": "test_rate",
-        "amount": 100,
         "schedule_id": 1,
         "user_id": 1,
+        "amount": 100,
         "duration_unit": "days"
     }
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Rate not found.",
+    "error_code": 5
 }
 ```
 
@@ -3225,7 +3468,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type            | Description |
 |-----------|-----------------|-------------|
-| rate_id   | Integer (*Required*) | ID          |
+| rate_id   | Integer (*Required*) | ID Rate         |
 
 ### Response data: JSON string with the following elements
 
@@ -3233,12 +3476,11 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 |-----------|------------------------------|----------------------------------------------|
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
-| data      | Object packed to JSON string | User object with all fields or empty object  |
+| data      | Object packed to JSON string | Rate object with all fields or empty object  |
 
 ## Create New Rate
 
 > Request body (application/json):
-
 ```json
 {
 	"user_id": 1,
@@ -3249,13 +3491,21 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully created.",
    "id": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "User not found.",
+    "error_code": 5
 }
 ```
 
@@ -3272,8 +3522,8 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | user_id       | Integer (*Required*)                                          |             |
 | schedule_id   | Integer (*Required*)                                          |             |
 | name          | String (*Required*)                                           |             |
-| amount        | Float (*Required*)                                            |             |
-| duration_unit | String from the list: minutes, hours, days, weeks, months (*Required*) |             |
+| amount        | Float                                             |             |
+| duration_unit | String from the list: minutes, hours, days, weeks, months, years (*Required*) |             |
 
 ### Response data: JSON string with the following elements
 
@@ -3286,7 +3536,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Update Rate
 
 > Request body (application/json):
-
 ```json
 {
 	"rate_id": 1,
@@ -3295,11 +3544,19 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > Response body (application/json):
-
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully updated."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "User not found.",
+    "error_code": 5
 }
 ```
 
@@ -3313,12 +3570,12 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter     | Type                                             | Description |
 |---------------|--------------------------------------------------|-------------|
-| rate_id       | Integer (*Required*)                                 |             |
+| rate_id       | Integer (*Required*)                             |             |
 | user_id       | Integer                                          |             |
 | schedule_id   | Integer                                          |             |
 | name          | String                                           |             |
 | amount        | Float                                            |             |
-| duration_unit | String from the list: minutes, hours, days, weeks, months |             |
+| duration_unit | String from the list: minutes, hours, days, weeks, months, years |             |
 
 ### Response data: JSON string with the following elements
 
@@ -3338,7 +3595,6 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > Response body (application/json):
-
 ```json
 {
    "status": "SUCCESS",
@@ -3346,13 +3602,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
    "data": [
       {
           "id": 1,
-          "name": "test_rate",
-          "amount": 100,
           "schedule_id": 1,
           "user_id": 1,
+          "name": "test_rate",
+          "amount": 100,
           "duration_unit": "days"
       }
-   ]
+   ],
+  "count": 1
 }
 ```
 
@@ -3381,23 +3638,31 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
 | message   | String                       | Error description or successful info message |
 | data      | Object packed to JSON string | User object with all fields or empty object  |
+| count      | Integer                      | Count of finded objects |
 
 ## Delete Rate
 
 > Request body (application/json):
-
 ```json
 {
 	"rate_id": 1
 }
 ```
 
-> Response body (application/json):
-
+> 200 Response body (application/json):
 ```json
 {
    "status": "SUCCESS",
    "message": "Successfully deleted."
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+    "message": "Rate not found.",
+    "error_code": 5
 }
 ```
 
@@ -3411,7 +3676,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 | Parameter | Type    | Description |
 |-----------|---------|-------------|
-| rate_id   | Integer |             |
+| rate_id   | Integer (*Required*)|             |
 
 ### Response data: JSON string with the following elements
 
@@ -4478,6 +4743,43 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | data      | Array of object packed to JSON string | Array of ID of approved time entry  |
 | count   | Integer                                | Count of approved time entry            |
 
+## Export Time Entries
+
+> Request body (application/json):
+```json
+{
+  "time_entry_ids": [0, 10],
+  "with_headers": true
+}
+```
+
+> 200 Response body (text/csv):
+
+
+### HTTP Request
+
+`POST /api/{app_path}/ts/export`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter      | Type                                | Description         |
+|----------------|-------------------------------------|---------------------|
+| time_entry_ids | Array[Integer]                      |  TimeEntry IDs      |
+| task_id        | Integer                             |                     |
+| user_id        | Integer                             |                     |
+| status         | String from list: in-progress, rejected, approved         |
+| with_headers   | Boolean                             |  Include headers to csv ? default = false |
+
+
+
+### Response data: file
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| file      | text/csv                     |              |
+
 ## Calculate a cost of selected time_entries for invoice. 
 Return duration in seconds and cost for selected APPROVED time entry
 
@@ -4523,5 +4825,126 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 | message   | String                                | Error description or successful info message            |
 | data: duration | Integer | Duration in seconds  |
 | data: sum      | Float | Full cost (with minus breaks)  |
+
+## Add comment to Time Entry
+
+> Request body (application/json):
+
+```json
+{
+  "time_entry_id": 1,
+  "content": "content text"
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "id": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Time Entry not found.",
+   "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/ts/add_comment`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                    |
+|-----------|---------|--------------------------------|
+| time_entry_id| Integer (*Required*) |                   |
+| content   | String (*Required*)  |                   |
+
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| id        | Integer                      | ID of created comment  |
+
+## Get comments of Time Entry
+
+> Request body (application/json):
+
+```json
+{
+    "time_entry_id": 1,
+    "with": ["users"]
+}
+```
+
+> 200 Response body (application/json):
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "comments": [
+      {
+        "id": 0,
+        "commentator": 1,
+        "content": "Comment text",
+        "date": 1566402943
+      }
+    ],
+    "users": {
+      "1": {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "Smith",
+        "picture": "url_to_user_avatar"
+      }
+    }
+  },
+  "count": 1
+}
+```
+
+> 404 Not found. Response body (application/json):
+```json
+{
+   "status": "ERROR",
+   "message": "Time Entry not found.",
+   "error_code": 5
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/ts/comments`
+
+HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
+
+### Request data: JSON string with the following elements
+
+| Parameter | Type    | Description                    |
+|-----------|---------|--------------------------------|
+| time_entry_id   | Integer (*Required*) |                   |
+| with      | Array of String  |   "users"             |
+
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                         | Description                                  |
+|-----------|------------------------------|----------------------------------------------|
+| status    | String from list: SUCCESS, ERROR | Operation result successful / execution error    |
+| data      | Array of Comment object                      |  |
+| count      | Integer                      | Count of finded comments |
 
 ## <ins>**Changelog**</ins>
