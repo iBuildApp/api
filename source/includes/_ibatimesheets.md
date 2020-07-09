@@ -23,6 +23,9 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
    "token": "$2y$10$UP8aZvonwuqnaSBrdpiB4eq5NI3VHZtzcFhC73o0Slf/6uSBU3.je"
 }
 ```
+### HTTP Request
+
+`POST /api/{APP_CODE}/login`
 
 ### Request data: JSON string with the following elements
 
@@ -38,7 +41,6 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
 | status    | String                        | SUCCESS|ERROR                                                           |
 | message   | String                        | Error description or successful info message                            |
 | token     | String                        | Auth token of user session. Will be used to sign every next request.    |
-| status    | String from list: ACTIVE, PENDING | User status active / pending activation (Unable to login and use the system) |
 
 ## User Registration
 
@@ -63,14 +65,21 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
 }
 ```
 
+### HTTP Request
+
+`POST /api/{APP_CODE}/register`
+
 ### Request data: JSON string with the following elements
 
 | Parameter  | Type           | Description   |
 |------------|----------------|---------------|
 | email      | String (*Required*) | Login (email) |
-| password   | String (*Required*) | Password      |
+| password   | String (*Required*) | Password |
 | first_name | String         | First name    |
 | last_name  | String         | Last name     |
+| sex        | String         | male, female  |
+| position   | String         |               |
+| birth_date | String         |  YYYY-MM-DD   |
 
 ### Response data: JSON string with the following elements
 
@@ -80,6 +89,468 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
 | message   | String                        | Error description or successful info message                            |
 | token     | String                        | Auth token of user session. Will be used to sign every next request.    |
 | status    | String from list: ACTIVE, PENDING | User status active / pending activation (Unable to login and use the system) |
+
+## Request for change password
+Sending email to user with link for reset password
+
+> Request body (application/json):
+
+```json
+{
+	"email": "test@test.com"
+}
+```
+
+> Response body (application/json):
+
+```json
+{
+   "status": "SUCCESS",
+   "message": "Link to reset password successfully sent to your email."
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/restore`
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+| email      | String (*Required*) | Login (email) |
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| message   | String                        | Error description or successful info message                            |
+
+## Reset password
+If email and token valid, generated new password end sended to user email.
+### HTTP Request
+
+`GET /api/{APP_CODE}/reset`
+
+### Request data: GET parameters 
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+| email      | String (*Required*) |  |
+| token      | String (*Required*) |  |
+
+## Get App settings
+
+> Request body (application/json):
+
+```json
+{
+
+}
+```
+
+> Response body (application/json):
+
+```json
+{
+    "status": "SUCCESS",
+    "data": {
+        "path": "for_test",
+        "settings": []
+    }
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/app`
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+|       | | |
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| data      | Array of App parameters                        |                            |
+
+## Update App settings
+
+> Request body (application/json):
+
+```json
+{
+	"settings":{
+        "option_1":true,
+        "option_2":4
+    }
+}
+```
+
+> Response body (application/json):
+
+```json
+{
+    "status": "SUCCESS",
+    "message": "Successfully updated."
+}
+```
+OR (if nothing changed)
+```json
+{
+    "status": "SUCCESS",
+    "message": "Not updated - no changes."
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/app`
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+|  settings     |  Array of parameters with values|  param1: value, param2: value     |
+
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| data      | Array of App parameters                        |                            |
+
+## Get timeline (for dashboard)
+Returns a list of recent events by application (10 are saved)
+
+> Response body (application/json):
+
+```json
+{
+    "status": "SUCCESS",
+    "data": [
+        {
+            "title": "9",
+            "author": "Root Adminson",
+            "event_type": "approved",
+            "datetime": "1583324692"
+        },
+        {
+            "title": "2019-08-27...2019-08-27 hours approved ",
+            "author": "Root Adminson",
+            "picture": "url_to_user_avatar",
+            "event_type": "approved",
+            "datetime": "1586330574"
+        }
+    ]
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/timeline`
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| data      | Array of Event objects                        |                            |
+
+## Get dashboard 
+Returns a dashboard with generalized application information
+
+> Request body (application/json):
+
+```json
+{
+  "period":"this_month"
+}
+```
+
+> Response body (application/json):
+
+```json
+{
+    "status": "SUCCESS",
+    "data": {
+        "hours_clocked": {
+            "current": 0,  
+            "previous": 6.9, 
+            "percent": -100  
+        },
+        "tasks": {
+            "current": 0,
+            "previous": 1,
+            "percent": -100
+        },
+        "clients": {
+            "current": 0,
+            "previous": 1,
+            "percent": -100
+        },
+        "average_session": {
+            "current": 0,
+            "previous": 1.4,
+            "percent": -100
+        },
+        "revenue_projection": {
+            "current": "$2K",
+            "percent": -11.1
+        }
+    }
+}
+
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/dashboard`
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+|  period    |  String (*Required*)       |  from list: this_day, this_week, this_month, this_year, yesterday, last_week, last_month, last_year     |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| data      | Array of data objects   |  Each object (exclude revenue_projection)  has current value, previous and difference in %                           |
+
+## Get Tracking Trend (for dashboard)
+Returns a dashboard with generalized application information
+
+> Request body (application/json):
+
+```json
+{
+  "period":"this_month"
+}
+```
+
+> Response body (application/json):
+
+```json
+{
+    "status": "SUCCESS",
+    "data": {
+        "1583283600": {  
+            "pure": 4,  
+            "dirty": 4  
+        },
+        "1583370000": {
+            "pure": 0,
+            "dirty": 1
+        },
+        "1583456400": {
+            "pure": 1,
+            "dirty": 1
+        },
+        "1583816400": {
+            "pure": 1,
+            "dirty": 1
+        },
+        "1583902800": {
+            "pure": 0.8,
+            "dirty": 1
+        }
+    }
+}
+```
+
+```
+Format data:
+"1583283600": {  // timestamp
+    "pure": 4,  // float. pure time i.e. minus breaks
+    "dirty": 4  // float. dirty time i.e. without deduction of breaks
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/tracking_trend`
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+|  period    |  String (*Required*)       |  from list: this_day, this_week, this_month, this_year, yesterday, last_week, last_month, last_year     |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| data      | Array of data objects   |                            |
+
+## Get Money Trend (for dashboard)
+Returns data for the dashboard finance trend
+
+> Request body (application/json):
+```json
+{
+  "period":"this_year",
+  "group":"daily"
+}
+```
+
+> Response body (application/json):
+```json
+{
+    "status": "SUCCESS",
+    "data": {
+        "revenue": {
+            "data": [
+                {
+                    "amount": "20",
+                    "year": "2020",
+                    "month": "2", 
+                    "day": "9"  
+                },
+                {
+                    "amount": "10",
+                    "year": "2020",
+                    "month": "2",
+                    "day": "10"
+                },
+                {
+                    "amount": "30",
+                    "year": "2020",
+                    "month": "2",
+                    "day": "11"
+                },
+                {
+                    "amount": "10",
+                    "year": "2020",
+                    "month": "3",
+                    "day": "10"
+                }
+            ],
+            "average": 17.5   
+        },
+        "expediture": {
+            "data": [
+                {
+                    "sum": "60",
+                    "year": "2020",
+                    "month": "2",
+                    "day": "18"
+                },
+                {
+                    "sum": "40",
+                    "year": "2020",
+                    "month": "2",
+                    "day": "19"
+                },
+                {
+                    "sum": "50",
+                    "year": "2020",
+                    "month": "3",
+                    "day": "4"
+                }
+            ],
+            "average": 50  
+        }
+    }
+}
+
+```
+
+```
+Format data:
+"data": [
+    {
+        "amount": "20", // value
+        "year": "2020",
+        "month": "2", //may be absent - depending on grouping
+        "day": "9"  //may be absent - depending on grouping
+    }
+],
+"average": 17.5    //average for the period
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/money_trend`
+
+### Request data: JSON string with the following elements
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+|  period    |  String (*Required*)       |  from list: this_day, this_week, this_month, this_year, yesterday, last_week, last_month, last_year     |
+|  group     |  String  (*Required*)      |  Grouping. From list: daily, weekly, monthly, yearly     |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| data      | Array of data objects   |                            |
+
+## Import users from CSV
+
+> Request body (multipart/form-data):
+```
+  "file":"file.csv",
+  "field_mapping": {
+        "first_name": 0,
+        "last_name": 1,
+        "email": 2
+  }
+```
+
+> Response body (application/json):
+```json
+{
+    "status": "SUCCESS",
+    "message": "Import of users success.",
+    "data": {
+        "success": [
+            {
+                "email": "1@email.com",
+                "first_name": "John",
+                "last_name": "Smith"
+            },
+            {
+                "email": "2@email.com",
+                "first_name": "Will",
+                "last_name": "Doe"
+            }
+],
+        "fail": []
+    }
+}
+```
+
+### HTTP Request
+
+`POST /api/{APP_CODE}/import_users_csv`
+
+### Request data: multipart/form-data
+
+| Parameter  | Type           | Description   |
+|------------|----------------|---------------|
+|  file      |  file (*Required*)       |      |
+|  field_mapping      |  Array       |  Order of fields in file. Default: first_name => 0, last_name => 1, email => 2,    |
+
+### Response data: JSON string with the following elements
+
+| Parameter | Type                          | Description                                                             |
+|-----------|-------------------------------|-------------------------------------------------------------------------|
+| status    | String from list: SUCCESS, ERROR  | Operation result successful / execution error                               |
+| message   | String                        | Error description or successful info message                               |
+| data      | Array of data objects         |  success-imported users, fail-NOT imported                          |
 
 ## <ins>**USER**</ins>
 
