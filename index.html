@@ -649,16 +649,16 @@
 </tbody></table>
 <h2 id='user-registration'>User Registration</h2>
 <blockquote>
-<p>Request body (application/json):</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
+<p>Request body (application/json):
+<code>json
+{
+    &quot;email&quot;: &quot;test@test.com&quot;,
+    &quot;password&quot;: &quot;12345678&quot;,
+    &quot;first_name&quot;: &quot;John&quot;,
+    &quot;last_name&quot;: &quot;Doe&quot;
+}
+</code></p>
+
 <p>Response body (application/json):</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1135,88 +1135,84 @@
 <p>Returns data for the dashboard finance trend</p>
 
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;period&quot;:&quot;this_year&quot;,
-  &quot;group&quot;:&quot;daily&quot;
-}
-</code></p>
-
-<p>Response body (application/json):
-```json
-{
-    &quot;status&quot;: &quot;SUCCESS&quot;,
-    &quot;data&quot;: {
-        &quot;revenue&quot;: {
-            &quot;data&quot;: [
-                {
-                    &quot;amount&quot;: &quot;20&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;2&quot;, 
-                    &quot;day&quot;: &quot;9&quot;<br>
-                },
-                {
-                    &quot;amount&quot;: &quot;10&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;2&quot;,
-                    &quot;day&quot;: &quot;10&quot;
-                },
-                {
-                    &quot;amount&quot;: &quot;30&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;2&quot;,
-                    &quot;day&quot;: &quot;11&quot;
-                },
-                {
-                    &quot;amount&quot;: &quot;10&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;3&quot;,
-                    &quot;day&quot;: &quot;10&quot;
-                }
-            ],
-            &quot;average&quot;: 17.5<br>
-        },
-        &quot;expediture&quot;: {
-            &quot;data&quot;: [
-                {
-                    &quot;sum&quot;: &quot;60&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;2&quot;,
-                    &quot;day&quot;: &quot;18&quot;
-                },
-                {
-                    &quot;sum&quot;: &quot;40&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;2&quot;,
-                    &quot;day&quot;: &quot;19&quot;
-                },
-                {
-                    &quot;sum&quot;: &quot;50&quot;,
-                    &quot;year&quot;: &quot;2020&quot;,
-                    &quot;month&quot;: &quot;3&quot;,
-                    &quot;day&quot;: &quot;4&quot;
-                }
-            ],
-            &quot;average&quot;: 50<br>
-        }
-    }
-}</p>
+<p>Request body (application/json):</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>
-</code></pre></div>
-<p>Format data:
-&quot;data&quot;: [
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"period"</span><span class="p">:</span><span class="s2">"this_year"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"group"</span><span class="p">:</span><span class="s2">"daily"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"revenue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">  
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"average"</span><span class="p">:</span><span class="w"> </span><span class="mf">17.5</span><span class="w">   
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"expediture"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"average"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">  
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>Format data:
+"data": [
     {
-        &quot;amount&quot;: &quot;20&quot;, // value
-        &quot;year&quot;: &quot;2020&quot;,
-        &quot;month&quot;: &quot;2&quot;, //may be absent - depending on grouping
-        &quot;day&quot;: &quot;9&quot;  //may be absent - depending on grouping
+        "amount": "20", // value
+        "year": "2020",
+        "month": "2", //may be absent - depending on grouping
+        "day": "9"  //may be absent - depending on grouping
     }
 ],
-&quot;average&quot;: 17.5    //average for the period
-```</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+"average": 17.5    //average for the period
+</code></pre></div><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/money_trend</code></p>
 <h3 id='request-data-json-string-with-the-following-elements-8'>Request data: JSON string with the following elements</h3>
 <table><thead>
@@ -1258,40 +1254,38 @@
 </tbody></table>
 <h2 id='import-users-from-csv'>Import users from CSV</h2>
 <blockquote>
-<p>Request body (multipart/form-data):
-<code>
-  &quot;file&quot;:&quot;file.csv&quot;,
-  &quot;field_mapping&quot;: {
-        &quot;first_name&quot;: 0,
-        &quot;last_name&quot;: 1,
-        &quot;email&quot;: 2
-  }
-</code></p>
-
-<p>Response body (application/json):
-<code>json
-{
-    &quot;status&quot;: &quot;SUCCESS&quot;,
-    &quot;message&quot;: &quot;Import of users success.&quot;,
-    &quot;data&quot;: {
-        &quot;success&quot;: [
-            {
-                &quot;email&quot;: &quot;1@email.com&quot;,
-                &quot;first_name&quot;: &quot;John&quot;,
-                &quot;last_name&quot;: &quot;Smith&quot;
-            },
-            {
-                &quot;email&quot;: &quot;2@email.com&quot;,
-                &quot;first_name&quot;: &quot;Will&quot;,
-                &quot;last_name&quot;: &quot;Doe&quot;
-            }
-],
-        &quot;fail&quot;: []
-    }
-}
-</code></p>
+<p>Request body (multipart/form-data):</p>
 </blockquote>
-<h3 id='http-request-11'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight plaintext"><code>  "file":"file.csv",
+  "field_mapping": {
+        "first_name": 0,
+        "last_name": 1,
+        "email": 2
+  }
+</code></pre></div>
+<blockquote>
+<p>Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Import of users success."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1@email.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2@email.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"fail"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/import_users_csv</code></p>
 <h3 id='request-data-multipart-form-data'>Request data: multipart/form-data</h3>
 <table><thead>
@@ -1381,25 +1375,23 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>401 Unauthorized. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-     &quot;message&quot;: &quot;Auth token not specified or incorrect.&quot;,
-     &quot;error_code&quot;: 9
-}
-</code></p>
-
-<p>404 User not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;User not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>401 Unauthorized. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-12'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auth token not specified or incorrect."</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 User not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2309,16 +2301,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Group not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-20'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2362,23 +2352,21 @@
 </tbody></table>
 <h2 id='create-new-group'>Create New Group</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;name&quot;:&quot;nameTest&quot;
-}
-</code></p>
-
-<p>Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully created.&quot;,
-   &quot;id&quot;: 1
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-21'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"nameTest"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully created."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2442,33 +2430,31 @@
 </tbody></table>
 <h2 id='update-group'>Update Group</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;group_id&quot;: 1,
-    &quot;name&quot;: &quot;New_name&quot;,
-    &quot;description&quot;: &quot;New_description&quot;
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully updated.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Group not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-22'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New_name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New_description"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully updated."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-22'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2628,24 +2614,22 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully added.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Group not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>200 Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-24'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully added."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-24'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group/add_user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2689,32 +2673,30 @@
 </tbody></table>
 <h2 id='delete-user-from-group'>Delete User from Group</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;group_id&quot;:1,
-    &quot;user_id&quot;:2
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully deleted.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Group not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
-<h3 id='http-request-25'>HTTP Request</h3></blockquote>
-
+<p>Request body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"group_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-25'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group/delete_user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2765,46 +2747,44 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>200 Response body (application/json):
-<code>json
-{
-    &quot;status&quot;: &quot;SUCCESS&quot;,
-    &quot;message&quot;: &quot;1 user(s) found.&quot;,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 111,
-            &quot;email&quot;: &quot;222@222.ru&quot;,
-            &quot;first_name&quot;: &quot;222&quot;,
-            &quot;last_name&quot;: &quot;2222&quot;,
-            &quot;hourly_rate&quot;: 0,
-            &quot;roles&quot;: [&quot;ROLE_USER&quot;],
-            &quot;created&quot;: &quot;1591787712&quot;,
-            &quot;exported&quot;: &quot;946684800&quot;,
-            &quot;updated&quot;: &quot;1593163617&quot;,
-            &quot;activated&quot;: true,
-            &quot;settings&quot;: {
-                &quot;datetime_format&quot;: &quot;d/m/Y h:ia&quot;
-            },
-            &quot;paid_hours&quot;: 0,
-            &quot;unapproved_hours&quot;: 4.01,
-            &quot;teams&quot;: [1],
-            &quot;birth_date&quot;: &quot;1990-05-01&quot;
-        }
-    ],
-    &quot;count&quot;: 1
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Group not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>200 Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-26'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 user(s) found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"222@222.ru"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"222"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2222"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hourly_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ROLE_USER"</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1591787712"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"exported"</span><span class="p">:</span><span class="w"> </span><span class="s2">"946684800"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593163617"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"activated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"datetime_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d/m/Y h:ia"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"paid_hours"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unapproved_hours"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.01</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-26'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group/get_users</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2868,16 +2848,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Group not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-27'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-27'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/group/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2943,16 +2921,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Client not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-28'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-28'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3130,16 +3106,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Client not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-30'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-30'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3367,16 +3341,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Client not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-32'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-32'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3498,16 +3470,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Client not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-34'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Client not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3587,16 +3557,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Invoice not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-35'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3652,23 +3620,21 @@
 <p><em>Set payed this invoice and all his timeEntries. ADMIN_ACCESS_ONLY</em></p>
 
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;invoice_id&quot;:2,
-    &quot;payed_date&quot;:1587081600
-}
-</code></p>
-
-<p>Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully payed.&quot;
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-36'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payed_date"</span><span class="p">:</span><span class="mi">1587081600</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully payed."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-36'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/set_payed</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3931,16 +3897,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Invoice not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-39'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-39'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3995,16 +3959,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Invoice not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-40'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-40'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/invoice/add_comment</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4082,16 +4044,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Invoice not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-41'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-41'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/invoice/comments</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4142,90 +4102,88 @@
 <p>Task API for iBuildApp Timesheets, handling getting task information, creating/deleting/updating a task, setting task status, adding/deleting user(s) from a task, and searching for task(s).</p>
 <h2 id='get-task-info'>Get Task Info</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;task_id&quot;: 1,
-  &quot;with&quot;: [&quot;users&quot;,&quot;projects&quot;]
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-  &quot;status&quot;: &quot;SUCCESS&quot;,
-  &quot;message&quot;: &quot;string&quot;,
-  &quot;data&quot;: {
-    &quot;tasks&quot;: [
-      {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;Task name&quot;,
-        &quot;project&quot;: 0,
-        &quot;duration&quot;: 100,
-        &quot;estimate&quot;: 100,
-        &quot;estimate_unit&quot;: &quot;minutes&quot;,
-        &quot;estimate_hours&quot;: 3.2,
-        &quot;description&quot;: &quot;description&quot;,
-        &quot;status&quot;: &quot;new&quot;,
-        &quot;users&quot;: [0],
-        &quot;entries&quot;: [
-          {
-            &quot;id&quot;: 0,
-            &quot;user_id&quot;: 0,
-            &quot;task_id&quot;: 0,
-            &quot;start_time&quot;: 1583905200,
-            &quot;end_time&quot;: 1583905200,
-            &quot;approve_date&quot;: 1583905200,
-            &quot;breaks&quot;: 0,
-            &quot;comments&quot;: 0,
-            &quot;duration&quot;: 0,
-            &quot;status&quot;: &quot;in-progress&quot;,
-            &quot;payment_status&quot;: &quot;pending&quot;,
-            &quot;start_location&quot;: [
-              37.270248,
-              -119.989356
-            ],
-            &quot;end_location&quot;: [
-              37.270248,
-              -119.989356
-            ]
-          }
-        ]
-      }
-    ],
-    &quot;users&quot;: {
-      &quot;0&quot;: {
-        &quot;id&quot;: 0,
-        &quot;email&quot;: &quot;email@domain.com&quot;,
-        &quot;first_name&quot;: &quot;John&quot;,
-        &quot;last_name&quot;: &quot;Smith&quot;,
-        &quot;hourly_rate&quot;: 0,
-        &quot;picture&quot;: &quot;url_to_user_avatar&quot;,
-        &quot;birth_date&quot;: &quot;1988-11-22&quot;
-      }
-    },
-    &quot;projects&quot;: {
-      &quot;0&quot;: {
-        &quot;id&quot;: 0,
-        &quot;name&quot;: &quot;Project name&quot;,
-        &quot;description&quot;: &quot;description...&quot;,
-        &quot;client_id&quot;: 0,
-        &quot;duration_unit&quot;: &quot;minutes&quot;,
-        &quot;status&quot;: &quot;new&quot;,
-        &quot;planned_start_date&quot;: 1583905200,
-        &quot;actual_start_date&quot;: 1583905200,
-        &quot;planned_end_date&quot;: 1583905200,
-        &quot;actual_end_date&quot;: 1583905200,
-        &quot;estimated_duration&quot;: 100,
-        &quot;actual_duration&quot;: 100,
-        &quot;tasks&quot;: [0]
-      }
-    }
-  }
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-42'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">,</span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimate"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimate_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minutes"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimate_hours"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"approve_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"breaks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="mf">37.270248</span><span class="p">,</span><span class="w">
+              </span><span class="mf">-119.989356</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"end_location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="mf">37.270248</span><span class="p">,</span><span class="w">
+              </span><span class="mf">-119.989356</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@domain.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hourly_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url_to_user_avatar"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1988-11-22"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minutes"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planned_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actual_start_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planned_end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actual_end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583905200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimated_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actual_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-42'>HTTP Request</h3>
 <p><code>POST /timesheets/task</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4289,16 +4247,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Project not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-43'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-43'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4385,16 +4341,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Task not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-44'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-44'>HTTP Request</h3>
 <p><code>POST /timesheets/task/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4814,16 +4768,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Task not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-47'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-47'>HTTP Request</h3>
 <p><code>POST /timesheets/task/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4862,32 +4814,30 @@
 </tbody></table>
 <h2 id='add-user-to-task'>Add User to Task</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;task_id&quot;:1,
-  &quot;user_id&quot;:2
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;User successfully added to task.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Task not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-48'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"task_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User successfully added to task."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-48'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/add_user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4947,16 +4897,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Task not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-49'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-49'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/delete_user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5041,16 +4989,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Task not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-50'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-50'>HTTP Request</h3>
 <p><code>POST /timesheets/task/history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5094,89 +5040,87 @@
 </tbody></table>
 <h2 id='history-of-changes-task-2'>History of changes task.</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;task_id&quot;: 1,
-  &quot;with&quot;: [&quot;users&quot;, &quot;tasks&quot;, &quot;projects&quot;]
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-    &quot;status&quot;: &quot;SUCCESS&quot;,
-    &quot;message&quot;: &quot;2 time entries found.&quot;,
-    &quot;data&quot;: {
-        &quot;time_entries&quot;: [
-            {
-                &quot;id&quot;: 2,
-                &quot;user_id&quot;: 111,
-                &quot;task_id&quot;: 3,
-                &quot;status&quot;: &quot;rejected&quot;,
-                &quot;start_time&quot;: &quot;1566486923&quot;,
-                &quot;breaks&quot;: 0,
-                &quot;comments&quot;: 0,
-                &quot;duration&quot;: 6020,
-                &quot;approve_date&quot;: &quot;1590652717&quot;,
-                &quot;end_time&quot;: &quot;1566492943&quot;,
-                &quot;start_location&quot;: [37.270241, -119.989356],
-                &quot;end_location&quot;: [37.537152,-118.857427]
-            },
-            {
-                &quot;id&quot;: 3,
-                &quot;user_id&quot;: 111,
-                &quot;task_id&quot;: 3,
-                &quot;status&quot;: &quot;approved&quot;,
-                &quot;start_time&quot;: &quot;1566492323&quot;,
-                &quot;breaks&quot;: 0,
-                &quot;comments&quot;: 0,
-                &quot;duration&quot;: 4220,
-                &quot;approve_date&quot;: &quot;1590652717&quot;,
-                &quot;end_time&quot;: &quot;1566496543&quot;,
-                &quot;start_location&quot;: [37.270242,-119.989356],
-                &quot;end_location&quot;: [37.537153,-118.857427]
-            }
-        ],
-        &quot;users&quot;: {
-            &quot;111&quot;: {
-                &quot;id&quot;: 111,
-                &quot;first_name&quot;: &quot;John&quot;,
-                &quot;last_name&quot;: &quot;Smith&quot;
-            }
-        },
-        &quot;tasks&quot;: {
-            &quot;3&quot;: {
-                &quot;id&quot;: 3,
-                &quot;project&quot;: 1,
-                &quot;name&quot;: &quot;Task #3&quot;,
-                &quot;status&quot;: &quot;in-progress&quot;
-            }
-        },
-        &quot;projects&quot;: {
-            &quot;1&quot;: {
-                &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;Project #1&quot;,
-                &quot;status&quot;: &quot;in-progress&quot;,
-                &quot;client_id&quot;: 1,
-                &quot;tasks&quot;: [9,7,5,3,1]
-            }
-        }
-    },
-    &quot;timestamp&quot;: 1594127815
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Task not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-51'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tasks"</span><span class="p">,</span><span class="w"> </span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 time entries found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"time_entries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rejected"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1566486923"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"breaks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">6020</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"approve_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1590652717"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1566492943"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">37.270241</span><span class="p">,</span><span class="w"> </span><span class="mf">-119.989356</span><span class="p">],</span><span class="w">
+                </span><span class="nl">"end_location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">37.537152</span><span class="p">,</span><span class="mf">-118.857427</span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1566492323"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"breaks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">4220</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"approve_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1590652717"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1566496543"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">37.270242</span><span class="p">,</span><span class="mf">-119.989356</span><span class="p">],</span><span class="w">
+                </span><span class="nl">"end_location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">37.537153</span><span class="p">,</span><span class="mf">-118.857427</span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"111"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task #3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project #1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1594127815</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-51'>HTTP Request</h3>
 <p><code>POST /timesheets/task/work_history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5251,16 +5195,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Task not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-52'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-52'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/add_comment</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5338,16 +5280,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Task not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-53'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-53'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/comments</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5427,16 +5367,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Project not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-54'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-54'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5475,25 +5413,23 @@
 </tbody></table>
 <h2 id='create-new-project'>Create New Project</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;client_id&quot;: 1,
-    &quot;name&quot;: &quot;Test&quot;,
-    &quot;description&quot;: &quot;test project&quot;
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully created.&quot;,
-   &quot;id&quot;: 1
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-55'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test project"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully created."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-55'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5608,16 +5544,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Project not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-56'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-56'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5878,16 +5812,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Project not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-58'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-58'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6090,27 +6022,27 @@
 </tbody></table>
 <h2 id='update-schedule'>Update Schedule</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;schedule_id&quot;: 1,
-  &quot;name&quot;: &quot;Name of schedule&quot;,
-  &quot;days_of_week&quot;: {
-    &quot;monday&quot;: true,
-    &quot;tuesday&quot;: true,
-    &quot;wednesday&quot;: true,
-    &quot;thursday&quot;: true,
-    &quot;friday&quot;: true,
-    &quot;saturday&quot;: true,
-    &quot;sunday&quot;: true
-  },
-  &quot;start_time&quot;: &quot;10:00&quot;,
-  &quot;end_time&quot;: &quot;19:59&quot;,
-  &quot;is_holiday&quot;: true,
-  &quot;is_overnight&quot;: true
-}
-</code></p>
-
+<p>Request body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of schedule"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"days_of_week"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:59"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_holiday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_overnight"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>200 Response body (application/json):</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6119,16 +6051,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Schedule not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-61'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-61'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6197,42 +6127,40 @@
 </tbody></table>
 <h2 id='search-schedules'>Search Schedules</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;name&quot;: &quot;test&quot;
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-  &quot;status&quot;: &quot;SUCCESS&quot;,
-  &quot;message&quot;: &quot;1 schedule(s) found.&quot;,
-  &quot;data&quot;: [
-    {
-      &quot;id&quot;: 0,
-      &quot;name&quot;: &quot;test name&quot;,
-      &quot;days_of_week&quot;: {
-        &quot;monday&quot;: true,
-        &quot;tuesday&quot;: true,
-        &quot;wednesday&quot;: true,
-        &quot;thursday&quot;: true,
-        &quot;friday&quot;: true,
-        &quot;saturday&quot;: true,
-        &quot;sunday&quot;: true
-      },
-      &quot;start_time&quot;: &quot;10:00&quot;,
-      &quot;end_time&quot;: &quot;19:59&quot;,
-      &quot;is_holiday&quot;: true,
-      &quot;is_overnight&quot;: true
-    }
-  ],
-  &quot;count&quot;: 1
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-62'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 schedule(s) found."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"days_of_week"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:59"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_holiday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_overnight"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-62'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6298,31 +6226,29 @@
 </tbody></table>
 <h2 id='delete-schedule'>Delete Schedule</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;schedule_id&quot;: 1
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-  &quot;status&quot;: &quot;SUCCESS&quot;,
-  &quot;message&quot;: &quot;Successfully deleted.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Schedule not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-63'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schedule not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-63'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6370,31 +6296,29 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>200 Response body (application/json):
-<code>json
-{
-    &quot;status&quot;: &quot;SUCCESS&quot;,
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;test_rate&quot;,
-        &quot;schedule_id&quot;: 1,
-        &quot;user_id&quot;: 1,
-        &quot;amount&quot;: 100,
-        &quot;duration_unit&quot;: &quot;days&quot;
-    }
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Rate not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>200 Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-64'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_rate"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"days"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rate not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-64'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6438,36 +6362,34 @@
 </tbody></table>
 <h2 id='create-new-rate'>Create New Rate</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;user_id&quot;: 1,
-    &quot;schedule_1&quot;: 1,
-    &quot;name&quot;: &quot;test_rate&quot;,
-    &quot;duration_unit&quot;: &quot;days&quot;,
-    &quot;amount&quot;: 100
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully created.&quot;,
-   &quot;id&quot;: 1
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;User not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-65'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"schedule_1"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_rate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"days"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully created."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-65'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6531,32 +6453,30 @@
 </tbody></table>
 <h2 id='update-rate'>Update Rate</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;rate_id&quot;: 1,
-    &quot;name&quot;: &quot;test_rate1&quot;
-}
-</code></p>
-
-<p>Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully updated.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;User not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-66'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_rate1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully updated."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-66'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6627,26 +6547,24 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;1 rate(s) found.&quot;,
-   &quot;data&quot;: [
-      {
-          &quot;id&quot;: 1,
-          &quot;schedule_id&quot;: 1,
-          &quot;user_id&quot;: 1,
-          &quot;name&quot;: &quot;test_rate&quot;,
-          &quot;amount&quot;: 100,
-          &quot;duration_unit&quot;: &quot;days&quot;
-      }
-   ],
-  &quot;count&quot;: 1
-}
-</code></p>
+<p>Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-67'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 rate(s) found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_rate"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duration_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"days"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-67'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6725,31 +6643,29 @@
 </tbody></table>
 <h2 id='delete-rate'>Delete Rate</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-    &quot;rate_id&quot;: 1
-}
-</code></p>
-
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Successfully deleted.&quot;
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Rate not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>Request body (application/json):</p>
 </blockquote>
-<h3 id='http-request-68'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>200 Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully deleted."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rate not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-68'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6914,24 +6830,22 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>200 Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;SUCCESS&quot;,
-   &quot;message&quot;: &quot;Starteed.&quot;
-}
-</code></p>
-
-<p>401 Unauthorized. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Auth token not specified or incorrect.&quot;,
-   &quot;error_code&quot;: 9
-}
-</code></p>
+<p>200 Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-69'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Starteed."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Unauthorized. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auth token not specified or incorrect."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-69'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/start</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6990,24 +6904,22 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 
 </span></code></pre></div>
 <blockquote>
-<p>200 Response body (application/json):
-<code>json
-{
-  &quot;status&quot;: &quot;SUCCESS&quot;,
-  &quot;message&quot;: &quot;Stopped.&quot;
-}
-</code></p>
-
-<p>401 Unauthorized. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Auth token not specified or incorrect.&quot;,
-   &quot;error_code&quot;: 9
-}
-</code></p>
+<p>200 Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-70'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stopped."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Unauthorized. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auth token not specified or incorrect."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-70'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/stop</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7068,34 +6980,32 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>200 Response body (application/json):
-<code>json
-{
-  &quot;status&quot;: &quot;SUCCESS&quot;,
-  &quot;message&quot;: &quot;Successfully created.&quot;,
-  &quot;id&quot;: 2
-}
-</code></p>
-
-<p>401 Unauthorized. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Auth token not specified or incorrect.&quot;,
-   &quot;error_code&quot;: 9
-}
-</code></p>
-
-<p>404 Task found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-    &quot;message&quot;: &quot;Task not found.&quot;,
-    &quot;error_code&quot;: 5
-}
-</code></p>
+<p>200 Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-71'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully created."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Unauthorized. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auth token not specified or incorrect."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Task found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task not found."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-71'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7265,16 +7175,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>401 Unauthorized. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Auth token not specified or incorrect.&quot;,
-   &quot;error_code&quot;: 9
-}
-</code></p>
+<p>401 Unauthorized. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-72'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auth token not specified or incorrect."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-72'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/get</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7334,25 +7242,23 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>401 Unauthorized. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Auth token not specified or incorrect.&quot;,
-   &quot;error_code&quot;: 9
-}
-</code></p>
-
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;TimeEntry  not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>401 Unauthorized. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-73'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Auth token not specified or incorrect."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>404 Not found. Response body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TimeEntry  not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-73'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7800,16 +7706,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 User not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Time entry not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 User not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-76'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Time entry not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-76'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7940,16 +7844,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Started TimeEntry not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-78'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started TimeEntry not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-78'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/break_start</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8008,16 +7910,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;Started Break not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-79'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Started Break not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-79'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/break_stop</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8090,16 +7990,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-     &quot;status&quot;: &quot;ERROR&quot;,
-      &quot;message&quot;: &quot;TimeEntry not found.&quot;,
-      &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-80'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TimeEntry not found."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-80'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/breaks</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8214,14 +8112,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </tbody></table>
 <h2 id='export-time-entries'>Export Time Entries</h2>
 <blockquote>
-<p>Request body (application/json):
-<code>json
-{
-  &quot;time_entry_ids&quot;: [0, 10],
-  &quot;with_headers&quot;: true
-}
-</code></p>
-
+<p>Request body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"time_entry_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"with_headers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>200 Response body (text/csv):</p>
 </blockquote>
 <h3 id='http-request-82'>HTTP Request</h3>
@@ -8362,16 +8260,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Time Entry not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-84'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Time Entry not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-84'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/add_comment</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8449,16 +8345,14 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>404 Not found. Response body (application/json):
-<code>json
-{
-   &quot;status&quot;: &quot;ERROR&quot;,
-   &quot;message&quot;: &quot;Time Entry not found.&quot;,
-   &quot;error_code&quot;: 5
-}
-</code></p>
+<p>404 Not found. Response body (application/json):</p>
 </blockquote>
-<h3 id='http-request-85'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Time Entry not found."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-85'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/comments</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
