@@ -45,7 +45,6 @@ Basic API for registering/authorizing a user, getting dashboard data and user hi
 ## User Registration
 
 > Request body (application/json):
-
 ```json
 {
 	"email": "test@test.com",
@@ -398,6 +397,7 @@ Format data:
 Returns data for the dashboard finance trend
 
 > Request body (application/json):
+
 ```json
 {
   "period":"this_year",
@@ -406,6 +406,7 @@ Returns data for the dashboard finance trend
 ```
 
 > Response body (application/json):
+
 ```json
 {
     "status": "SUCCESS",
@@ -464,7 +465,6 @@ Returns data for the dashboard finance trend
         }
     }
 }
-
 ```
 
 ```
@@ -501,6 +501,7 @@ Format data:
 ## Import users from CSV
 
 > Request body (multipart/form-data):
+
 ```
   "file":"file.csv",
   "field_mapping": {
@@ -511,6 +512,7 @@ Format data:
 ```
 
 > Response body (application/json):
+
 ```json
 {
     "status": "SUCCESS",
@@ -602,6 +604,7 @@ User API for iBuildApp Timesheets, handling getting user information, creating/d
 ```
 
 > 401 Unauthorized. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -611,6 +614,7 @@ User API for iBuildApp Timesheets, handling getting user information, creating/d
 ```
 
 > 404 User not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -1230,6 +1234,7 @@ Group/Team API for iBuildApp Timesheets, handling getting group/team information
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1261,6 +1266,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Create New Group
 
 > Request body (application/json):
+
 ```json
 {
 	"name":"nameTest"
@@ -1268,6 +1274,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -1303,6 +1310,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Update Group
 
 > Request body (application/json):
+
 ```json
 {
     "group_id": 1,
@@ -1312,6 +1320,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -1320,6 +1329,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1417,6 +1427,7 @@ Must be at least one of parameters: group_id, name, keyword
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -1425,6 +1436,7 @@ Must be at least one of parameters: group_id, name, keyword
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1456,6 +1468,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Delete User from Group
 
 > Request body (application/json):
+
 ```json
 {
 	"group_id":1,
@@ -1464,6 +1477,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -1472,6 +1486,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1510,6 +1525,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
     "status": "SUCCESS",
@@ -1540,6 +1556,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1589,6 +1606,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1650,6 +1668,7 @@ Client/Customer API for iBuildApp Timesheets, handling getting client/customer i
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1759,6 +1778,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1882,6 +1902,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -1981,6 +2002,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -2034,6 +2056,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -2068,6 +2091,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 *Set payed this invoice and all his timeEntries. ADMIN_ACCESS_ONLY*
 
 > Request body (application/json):
+
 ```json
 {
 	"invoice_id":2,
@@ -2076,6 +2100,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -2243,6 +2268,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -2292,6 +2318,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -2361,6 +2388,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -2399,6 +2427,7 @@ Task API for iBuildApp Timesheets, handling getting task information, creating/d
 ## Get Task Info
 
 > Request body (application/json):
+
 ```json
 {
   "task_id": 1,
@@ -2407,6 +2436,7 @@ Task API for iBuildApp Timesheets, handling getting task information, creating/d
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
   "status": "SUCCESS",
@@ -2526,6 +2556,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -2582,6 +2613,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -2860,6 +2892,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -2890,6 +2923,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Add User to Task
 
 > Request body (application/json):
+
 ```json
 {
   "task_id":1,
@@ -2898,6 +2932,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -2906,6 +2941,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -2955,6 +2991,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -3029,6 +3066,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -3060,6 +3098,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## History of changes task.
 
 > Request body (application/json):
+
 ```json
 {
   "task_id": 1,
@@ -3068,6 +3107,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
     "status": "SUCCESS",
@@ -3133,6 +3173,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -3186,6 +3227,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3255,6 +3297,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3324,6 +3367,7 @@ Project API for iBuildApp Timesheets, handling getting project information, crea
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -3354,6 +3398,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Create New Project
 
 > Request body (application/json):
+
 ```json
 {
 	"client_id": 1,
@@ -3363,6 +3408,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -3423,6 +3469,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3571,6 +3618,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3716,6 +3764,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Update Schedule
 
 > Request body (application/json):
+
 ```json
 {
   "schedule_id": 1,
@@ -3746,6 +3795,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3783,6 +3833,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Search Schedules
 
 > Request body (application/json):
+
 ```json
 {
   "name": "test"
@@ -3790,6 +3841,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
   "status": "SUCCESS",
@@ -3847,6 +3899,7 @@ Must be at least one of parameters: name, keyword
 ## Delete Schedule
 
 > Request body (application/json):
+
 ```json
 {
   "schedule_id": 1
@@ -3854,6 +3907,7 @@ Must be at least one of parameters: name, keyword
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
   "status": "SUCCESS",
@@ -3862,6 +3916,7 @@ Must be at least one of parameters: name, keyword
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3906,6 +3961,7 @@ Rate API for iBuildApp Timesheets, handling getting rate information, creating/d
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
     "status": "SUCCESS",
@@ -3921,6 +3977,7 @@ Rate API for iBuildApp Timesheets, handling getting rate information, creating/d
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -3952,6 +4009,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Create New Rate
 
 > Request body (application/json):
+
 ```json
 {
 	"user_id": 1,
@@ -3963,6 +4021,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -3972,6 +4031,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4007,6 +4067,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Update Rate
 
 > Request body (application/json):
+
 ```json
 {
 	"rate_id": 1,
@@ -4015,6 +4076,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -4023,6 +4085,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4066,6 +4129,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -4114,6 +4178,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Delete Rate
 
 > Request body (application/json):
+
 ```json
 {
 	"rate_id": 1
@@ -4121,6 +4186,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -4129,6 +4195,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4289,6 +4356,7 @@ Time Entry API for iBuildApp Timesheets, handling getting time entry information
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
    "status": "SUCCESS",
@@ -4297,6 +4365,7 @@ Time Entry API for iBuildApp Timesheets, handling getting time entry information
 ```
 
 > 401 Unauthorized. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4340,6 +4409,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
   "status": "SUCCESS",
@@ -4348,6 +4418,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 401 Unauthorized. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4393,6 +4464,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 200 Response body (application/json):
+
 ```json
 {
   "status": "SUCCESS",
@@ -4402,6 +4474,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 401 Unauthorized. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4411,6 +4484,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Task found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4554,6 +4628,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 401 Unauthorized. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4604,6 +4679,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 401 Unauthorized. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -4613,6 +4689,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -4922,6 +4999,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 User not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -5028,6 +5106,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -5076,6 +5155,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -5141,6 +5221,7 @@ Return duration of breaks in seconds
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
      "status": "ERROR",
@@ -5217,6 +5298,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ## Export Time Entries
 
 > Request body (application/json):
+
 ```json
 {
   "time_entry_ids": [0, 10],
@@ -5318,6 +5400,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
@@ -5387,6 +5470,7 @@ HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)
 ```
 
 > 404 Not found. Response body (application/json):
+
 ```json
 {
    "status": "ERROR",
