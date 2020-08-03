@@ -317,6 +317,9 @@
                     <a href="#search-clients-with-grouping" class="toc-h2 toc-link" data-title="Search Clients with Grouping">Search Clients with Grouping</a>
                   </li>
                   <li>
+                    <a href="#export-clients-to-csv" class="toc-h2 toc-link" data-title="Export Clients to CSV">Export Clients to CSV</a>
+                  </li>
+                  <li>
                     <a href="#delete-client" class="toc-h2 toc-link" data-title="Delete Client">Delete Client</a>
                   </li>
                   <li>
@@ -679,7 +682,7 @@
 <tr>
 <td>password</td>
 <td>String (<em>Required</em>)</td>
-<td>Password</td>
+<td>Password. &gt;=8 and &lt;=16 characters</td>
 </tr>
 <tr>
 <td>first_name</td>
@@ -781,6 +784,26 @@
 <td>User object with all fields</td>
 </tr>
 </tbody></table>
+
+<p>Data:<br>
+• <strong>id</strong> (Integer) - <br>
+• <strong>email</strong> (String) - <br>
+• <strong>first_name</strong> (String) - <br>
+• <strong>last_name</strong> (String) - <br>
+• <strong>sex</strong> (String) - <em>male</em> or <em>female</em><br>
+• <strong>position</strong> (String) - specialization, profession<br>
+• <strong>hourly_rate</strong> (Float) - <em>hourly rate of user</em><br>
+• <strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br>
+• <strong>created</strong> (Timestamp) - <br>
+• <strong>updated</strong> (Timestamp) - <br>
+• <strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br>
+• <strong>settings</strong> (Array) - <em>user properties for application</em><br>
+• <strong>picture</strong> (String) - <em>link to user avatar</em><br>
+• <strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br>
+• <strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br>
+• <strong>teams</strong> (Array) - <em>IDs of usergroups</em><br>
+• <strong>notes</strong> (String) - <em>Notes fo admin. Visible only for admin.</em><br>
+• <strong>birth_date</strong> (Date) - YYYY-MM-DD<br></p>
 
 <blockquote>
 <p>200 Response body (application/json):</p>
@@ -913,12 +936,19 @@
 <td>String</td>
 <td></td>
 </tr>
-<tr>
-<td>is_active</td>
-<td>Boolean</td>
-<td></td>
-</tr>
 </tbody></table>
+
+<p>Data:<br>
+• <strong>email</strong> (String. REQUIRED) - <br>
+• <strong>password</strong> (String) - Lengh need &gt;=8 and &lt;=15 characters<br>
+• <strong>first_name</strong> (String) - <br>
+• <strong>last_name</strong> (String) - <br>
+• <strong>sex</strong> (String) - <em>male</em> or <em>female</em><br>
+• <strong>position</strong> (String) - specialization, profession<br>
+• <strong>hourly_rate</strong> (Float) - <em>hourly rate of user</em><br>
+• <strong>settings</strong> (Array) - <em>user properties for application</em><br>
+• <strong>notes</strong> (String) - <em>Notes fo admin. Visible only for admin.</em><br>
+• <strong>birth_date</strong> (Date) - YYYY-MM-DD<br></p>
 
 <blockquote>
 <p>200 Response body (application/json):</p>
@@ -994,7 +1024,7 @@
 <tr>
 <td>password</td>
 <td>String</td>
-<td>8&lt; password &lt;15</td>
+<td>8&lt;= password &lt;=15</td>
 </tr>
 <tr>
 <td>first_name</td>
@@ -1198,6 +1228,12 @@
 <td>Count of Objects</td>
 </tr>
 </tbody></table>
+
+<p>Data (Array) - <em>array of User objects:</em><br>
+• <strong>id</strong> (Integer)<br>
+• <strong>email</strong> (String)<br>
+• <strong>first_name</strong> (String)<br>
+• <strong>last_name</strong> (String)<br></p>
 <h2 id='search-users-with-grouping'>Search Users with Grouping</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -1353,6 +1389,32 @@
 <td>Count of Objects</td>
 </tr>
 </tbody></table>
+
+<p>Data:<br>
+• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
+• <strong>groups</strong>: - <em>array of objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>sex</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>position</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float) - <em>hourly rate of user</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>created</strong> (Timestamp) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>updated</strong> (Timestamp) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>activated</strong> (Boolean) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>settings</strong> (Array) - <em>user properties for application</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) - <em>link to user avatar</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>teams</strong> (Array) - <em>IDs of usergroups</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> (String) - <em>Notes for admin. Visible only for admin.</em><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (Date) - YYYY-MM-DD<br></p>
 <h2 id='delete-user'>Delete User</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -1536,6 +1598,28 @@
 <td>Current server Unix timestamp</td>
 </tr>
 </tbody></table>
+
+<p>Data:<br>
+• <strong>current_tasks</strong>: - <em>array of Task objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (Integer) Project ID<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - array of IDs related Users<br></p>
+
+<p>• <strong>current_time_entry</strong>: - <em>TimeEntry object:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>user_id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>task_id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>schedule_id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>start_time</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>end_time</strong> (Timestamp) (optional, if TimeEntry ended)<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>payment_status</strong> (String) May be: pending, payed<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>breaks</strong> (Integer)  Count of breaks<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>comments</strong> (Integer)  Count of comments<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br></p>
 <h2 id='get-user-history'>Get User History</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -1548,7 +1632,7 @@
     </span><span class="nl">"sorts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST /api/{APP_CODE}/user/create</code></p>
+<p><code>POST /api/{APP_CODE}/user/history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
 <h3 id='request-data-json-string-with-the-following-elements-10'>Request data: JSON string with the following elements</h3>
@@ -2180,9 +2264,9 @@
             </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2222"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"hourly_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ROLE_USER"</span><span class="p">],</span><span class="w">
-            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1591787712"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"exported"</span><span class="p">:</span><span class="w"> </span><span class="s2">"946684800"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1593163617"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1591787712</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"exported"</span><span class="p">:</span><span class="w"> </span><span class="mi">946684800</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1593163617</span><span class="p">,</span><span class="w">
             </span><span class="nl">"activated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"datetime_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d/m/Y h:ia"</span><span class="w">
@@ -2230,9 +2314,27 @@
 <tr>
 <td>count</td>
 <td>Integer</td>
-<td></td>
+<td>Count of finded users</td>
 </tr>
 </tbody></table>
+
+<p>Data: array of User object:<br>
+• <strong>id</strong> (Integer)<br>
+• <strong>email</strong> (String)<br>
+• <strong>first_name</strong> (String)<br>
+• <strong>last_name</strong> (String)<br>
+• <strong>hourly_rate</strong> (Float)<br>
+• <strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br>
+• <strong>created</strong> (Timestamp) - <br>
+• <strong>updated</strong> (Timestamp) - <br>
+• <strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br>
+• <strong>activated</strong> (Boolean) - <br>
+• <strong>settings</strong> (Array) - <em>user properties for application</em>. Default: {&quot;datetime_format&quot;: &quot;d/m/Y h:ia&quot;}<br>
+• <strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br>
+• <strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br>
+• <strong>picture</strong> (String) <br>
+• <strong>teams</strong> (Array) - Array of usergroup ID<br>
+• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
 <h2 id='delete-group'>Delete Group</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -2673,6 +2775,11 @@
 <td>Integer</td>
 <td></td>
 </tr>
+<tr>
+<td>with</td>
+<td>Array[String] from list: projects</td>
+<td></td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -2681,7 +2788,8 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 client(s) found."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"clients"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span><span class="w">
@@ -2694,9 +2802,28 @@
         </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finance"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"website.com"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descriptions..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project #1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brand Launch Event"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project #3"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">},</span><span class="w">
   </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response-data-json-string-with-the-following-elements-22'>Response data: JSON string with the following elements</h3>
@@ -2728,6 +2855,22 @@
 <td>Count of finded objects</td>
 </tr>
 </tbody></table>
+
+<p>Data:<br>
+• <strong>clients</strong>: - <em>array of Client objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>phone</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>contact_info</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>address</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>state</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>city</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>industry</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>website</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> - &quot;active&quot; OR not present<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>projects</strong> - array of IDs related Projects<br></p>
 <h2 id='search-clients-with-grouping'>Search Clients with Grouping</h2><h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/search_group</code></p>
 
@@ -2749,9 +2892,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
-<td>Integer</td>
-<td></td>
+<td>client_ids</td>
+<td>Array of Integer</td>
+<td>IDs of clients</td>
 </tr>
 <tr>
 <td>name</td>
@@ -2950,29 +3093,128 @@
 </tbody></table>
 
 <p>Data:<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>groups</strong>: - <em>array of objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - value of grouping field<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> - count of items in group<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>items[object]</strong> - array of Client objects:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>address</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>state</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>city</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>industry</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> - &quot;active&quot; OR not present<br></p>
-
-<p>&ensp;&ensp;&ensp;&ensp;• <strong>projects[key:object]</strong> - <em>list of related projects</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - Project ID<br>
+• <strong>groups</strong>: - <em>array of objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - value of grouping field<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> - count of items in group<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>items[object]</strong> - array of Client objects:<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> - string of list: &quot;new&quot;, &quot;in-progress&quot;, &quot;cancelled&quot;, &quot;done&quot;<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks[ ]</strong> - array of ID related tasks<br></p>
-<h2 id='delete-client'>Delete Client</h2><h3 id='http-request-22'>HTTP Request</h3>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>address</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>state</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>city</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>industry</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> - (String) &quot;active&quot; OR not present<br></p>
+
+<p>• <strong>projects[key:object]</strong> - <em>list of related projects</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - Project ID<br>
+&ensp;&ensp;&ensp;&ensp;• object:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - array of ID related tasks<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: &quot;new&quot;, &quot;in-progress&quot;, &quot;cancelled&quot;, &quot;done&quot;<br></p>
+<h2 id='export-clients-to-csv'>Export Clients to CSV</h2><h3 id='http-request-22'>HTTP Request</h3>
+<p><code>POST /api/{APP_CODE}/client/export_csv</code></p>
+
+<p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
+
+<blockquote>
+<p>Request body (application/json):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bayshore"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-24'>Request data: JSON string with the following elements</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_ids</td>
+<td>Array of Integer</td>
+<td>IDs of clients</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>if needed search with name</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>String</td>
+<td>if needed search with industry</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>if needed search with state</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>if needed search with city</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>if needed search with</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>String</td>
+<td>Search in name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>Default = 10</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='response-data-file'>Response data: file</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>text/csv</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Format of CSV:<br>
+• <strong>id</strong> <br>
+• <strong>email</strong> <br>
+• <strong>name</strong> <br>
+• <strong>contact_info</strong> <br>
+• <strong>address</strong> <br>
+• <strong>state</strong> <br>
+• <strong>city</strong> <br>
+• <strong>industry</strong> <br>
+• <strong>website</strong> <br>
+• <strong>notes</strong> <br>
+• <strong>status</strong> - &quot;active&quot; OR not present<br>
+• <strong>projects</strong> - Array of IDs related projects<br></p>
+<h2 id='delete-client'>Delete Client</h2><h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -2983,7 +3225,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-24'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-25'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3035,7 +3277,7 @@
 </tbody></table>
 <h2 id='invoice'><ins><strong>INVOICE</strong></ins></h2>
 <p>Invoice API for iBuildApp Timesheets, handling getting invoice information, creating/deleting/updating an invoice, changing invoice status, and searching for invoice(s).</p>
-<h2 id='get-invoice-info'>Get Invoice Info</h2><h3 id='http-request-23'>HTTP Request</h3>
+<h2 id='get-invoice-info'>Get Invoice Info</h2><h3 id='http-request-24'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3046,7 +3288,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-25'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-26'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3107,11 +3349,11 @@
     </span><span class="nl">"client_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"task_ids"</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-24'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-25'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-26'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-27'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3195,11 +3437,11 @@
     </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">30.5</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-25'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-26'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-27'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-28'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3274,11 +3516,11 @@
     </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payed_date"</span><span class="p">:</span><span class="mi">1587081600</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-26'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-27'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/set_payed</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-28'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-29'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3331,11 +3573,11 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"client_id"</span><span class="p">:[</span><span class="mi">1</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-27'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-28'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-29'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-30'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3425,11 +3667,11 @@
     </span><span class="nl">"group_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-28'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-29'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/search_group</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-30'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-31'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3535,11 +3777,11 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-29'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-30'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/invoice/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-31'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-32'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3597,11 +3839,11 @@
   </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content text"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-30'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-31'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/invoice/add_comment</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-32'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-33'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3664,11 +3906,11 @@
     </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-31'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-32'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/invoice/comments</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-33'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-34'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3756,11 +3998,11 @@
   </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">,</span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-32'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-33'>HTTP Request</h3>
 <p><code>POST /timesheets/task</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
-<h3 id='request-data-json-string-with-the-following-elements-34'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-35'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3873,7 +4115,7 @@
 <td>object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='create-new-task'>Create New Task</h2><h3 id='http-request-33'>HTTP Request</h3>
+<h2 id='create-new-task'>Create New Task</h2><h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3888,7 +4130,7 @@
     </span><span class="nl">"estimate_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minutes"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-35'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-36'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3969,7 +4211,7 @@
 <td>ID of created task</td>
 </tr>
 </tbody></table>
-<h2 id='update-task'>Update Task</h2><h3 id='http-request-34'>HTTP Request</h3>
+<h2 id='update-task'>Update Task</h2><h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST /timesheets/task/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -3983,7 +4225,7 @@
   </span><span class="nl">"estimate"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
   </span><span class="nl">"estimate_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hours"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-36'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-37'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4058,7 +4300,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='search-tasks'>Search Tasks</h2><h3 id='http-request-35'>HTTP Request</h3>
+<h2 id='search-tasks'>Search Tasks</h2><h3 id='http-request-36'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4070,7 +4312,7 @@
   </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">,</span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-37'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-38'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4215,7 +4457,64 @@
 <td>Count of finded objects</td>
 </tr>
 </tbody></table>
-<h2 id='search-tasks-with-grouping'>Search Tasks with Grouping</h2><h3 id='http-request-36'>HTTP Request</h3>
+
+<p>Data:<br>
+• <strong>tasks</strong>: - <em>array of Task objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (Integer) Project ID<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - array of IDs related Users<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> (Integer) - TimeEntry ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object: <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>start_datetime</strong> (Timestamp) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>end_datetime</strong> (Timestamp) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) - Duration in seconds<br></p>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
+• <strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of User<br>
+&ensp;&ensp;&ensp;&ensp;• object - User<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>teams</strong> (Array) - Array of usergroup ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
+• <strong>teams</strong>: - <em>array of *</em>[key:object]** UserGroup:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of UserGroup<br>
+&ensp;&ensp;&ensp;&ensp;• object - UserGroup<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: active, inactive <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>pay_rate</strong> (Float) - <br></p>
+
+<p>if &quot;with&quot; = [&quot;projects&quot;]:<br>
+• <strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Project<br>
+&ensp;&ensp;&ensp;&ensp;• object - Project<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - Array of related Task ID<br></p>
+<h2 id='search-tasks-with-grouping'>Search Tasks with Grouping</h2><h3 id='http-request-37'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/search_group</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4228,7 +4527,7 @@
   </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">,</span><span class="s2">"projects"</span><span class="p">],</span><span class="w">
   </span><span class="nl">"group_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-38'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-39'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4346,7 +4645,7 @@
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group name"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description.."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notes.."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"pay_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.5</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -4399,7 +4698,68 @@
 <td>Count of finded groups</td>
 </tr>
 </tbody></table>
-<h2 id='delete-task'>Delete Task</h2><h3 id='http-request-37'>HTTP Request</h3>
+
+<p>Data:<br>
+• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
+• <strong>groups</strong>: - <em>array of objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (Integer) Project ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - array of IDs related Tasks<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> (Integer) - TimeEntry ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object: <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>start_datetime</strong> (Timestamp) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>end_datetime</strong> (Timestamp) - <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) - Duration in seconds<br></p>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
+• <strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of User<br>
+&ensp;&ensp;&ensp;&ensp;• object - User<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>teams</strong> (Array) - Array of usergroup ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
+• <strong>teams</strong>: - <em>array of *</em>[key:object]** UserGroup:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of UserGroup<br>
+&ensp;&ensp;&ensp;&ensp;• object - UserGroup<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: active, inactive <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>pay_rate</strong> (Float) - <br></p>
+
+<p>if &quot;with&quot; = [&quot;projects&quot;]:<br>
+• <strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Project<br>
+&ensp;&ensp;&ensp;&ensp;• object - Project<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - Array of related Task ID<br></p>
+<h2 id='delete-task'>Delete Task</h2><h3 id='http-request-38'>HTTP Request</h3>
 <p><code>POST /timesheets/task/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4410,7 +4770,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-39'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-40'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4460,7 +4820,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='add-user-to-task'>Add User to Task</h2><h3 id='http-request-38'>HTTP Request</h3>
+<h2 id='add-user-to-task'>Add User to Task</h2><h3 id='http-request-39'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/add_user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4474,7 +4834,7 @@
 }
 </code></p>
 </blockquote>
-<h3 id='request-data-json-string-with-the-following-elements-40'>Request data: JSON string with the following elements</h3>
+<h3 id='request-data-json-string-with-the-following-elements-41'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4529,7 +4889,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='delete-user-from-task'>Delete User from Task</h2><h3 id='http-request-39'>HTTP Request</h3>
+<h2 id='delete-user-from-task'>Delete User from Task</h2><h3 id='http-request-40'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/delete_user</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4541,7 +4901,7 @@
   </span><span class="nl">"task_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"user_id"</span><span class="p">:</span><span class="mi">2</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-41'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-42'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4596,7 +4956,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='history-of-changes-task'>History of changes task.</h2><h3 id='http-request-40'>HTTP Request</h3>
+<h2 id='history-of-changes-task'>History of changes task.</h2><h3 id='http-request-41'>HTTP Request</h3>
 <p><code>POST /timesheets/task/history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4607,7 +4967,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-42'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-43'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4688,7 +5048,7 @@
 <td>object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='history-of-changes-task-2'>History of changes task.</h2><h3 id='http-request-41'>HTTP Request</h3>
+<h2 id='history-of-changes-task-2'>History of changes task.</h2><h3 id='http-request-42'>HTTP Request</h3>
 <p><code>POST /timesheets/task/work_history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4700,7 +5060,7 @@
   </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tasks"</span><span class="p">,</span><span class="w"> </span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-43'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-44'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4827,7 +5187,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='add-comment-to-task'>Add comment to task</h2><h3 id='http-request-42'>HTTP Request</h3>
+<h2 id='add-comment-to-task'>Add comment to task</h2><h3 id='http-request-43'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/add_comment</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4839,7 +5199,7 @@
   </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content text"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-44'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-45'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4894,7 +5254,7 @@
 <td>ID of created comment</td>
 </tr>
 </tbody></table>
-<h2 id='get-comments-of-task'>Get comments of task</h2><h3 id='http-request-43'>HTTP Request</h3>
+<h2 id='get-comments-of-task'>Get comments of task</h2><h3 id='http-request-44'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/comments</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4906,7 +5266,7 @@
     </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-45'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-46'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4986,7 +5346,7 @@
 </tbody></table>
 <h2 id='project'><ins><strong>PROJECT</strong></ins></h2>
 <p>Project API for iBuildApp Timesheets, handling getting project information, creating/deleting/updating a project, and searching for projects.</p>
-<h2 id='get-project-info'>Get Project Info</h2><h3 id='http-request-44'>HTTP Request</h3>
+<h2 id='get-project-info'>Get Project Info</h2><h3 id='http-request-45'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -4997,7 +5357,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"project_id"</span><span class="p">:</span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-46'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-47'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5061,7 +5421,7 @@
 <td>User object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='create-new-project'>Create New Project</h2><h3 id='http-request-45'>HTTP Request</h3>
+<h2 id='create-new-project'>Create New Project</h2><h3 id='http-request-46'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5074,7 +5434,7 @@
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test project"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-47'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-48'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5176,7 +5536,7 @@
 <td>New project id</td>
 </tr>
 </tbody></table>
-<h2 id='update-project'>Update Project</h2><h3 id='http-request-46'>HTTP Request</h3>
+<h2 id='update-project'>Update Project</h2><h3 id='http-request-47'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5188,7 +5548,7 @@
     </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my project"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-48'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-49'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5298,7 +5658,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='search-projects'>Search Projects</h2><h3 id='http-request-47'>HTTP Request</h3>
+<h2 id='search-projects'>Search Projects</h2><h3 id='http-request-48'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5312,7 +5672,7 @@
     </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tasks"</span><span class="w"> </span><span class="p">,</span><span class="s2">"clients"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-49'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-50'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5400,7 +5760,6 @@
       </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task name"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"project"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">
@@ -5445,7 +5804,32 @@
 <td>Count of finded objects</td>
 </tr>
 </tbody></table>
-<h2 id='search-projects-with-grouping'>Search Projects with Grouping</h2><h3 id='http-request-48'>HTTP Request</h3>
+
+<p>Data:<br>
+• <strong>projects</strong>: - <em>array of Project objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> - array of IDs related Tasks<br></p>
+
+<p>• <strong>tasks</strong>: - <em>array of *</em>[key:object]** related Tasks:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Task<br>
+&ensp;&ensp;&ensp;&ensp;• object - Task<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> Duration of all related TimeEntries. In seconds<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> - array of IDs related Users<br></p>
+<h2 id='search-projects-with-grouping'>Search Projects with Grouping</h2><h3 id='http-request-49'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/search_group</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5460,7 +5844,7 @@
     </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tasks"</span><span class="w"> </span><span class="p">,</span><span class="s2">"clients"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-50'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-51'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5688,7 +6072,34 @@
 <td>Count of finded groups</td>
 </tr>
 </tbody></table>
-<h2 id='delete-project'>Delete Project</h2><h3 id='http-request-49'>HTTP Request</h3>
+
+<p>Data:<br>
+• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
+• <strong>groups</strong>: - <em>array of objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - array of IDs related Tasks<br></p>
+
+<p>• <strong>clients</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Client<br>
+&ensp;&ensp;&ensp;&ensp;• object - Client<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br></p>
+
+<p>• <strong>tasks</strong>: - <em>array of *</em>[key:object]** related Tasks:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Task<br>
+&ensp;&ensp;&ensp;&ensp;• object - Task<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> Duration of all related TimeEntries. In seconds<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - Array of IDs related Users<br></p>
+<h2 id='delete-project'>Delete Project</h2><h3 id='http-request-50'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5699,7 +6110,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"project_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-51'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-52'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5749,7 +6160,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='schedule'><strong>SCHEDULE</strong></h2><h2 id='get-schedule-info'>Get Schedule Info</h2><h3 id='http-request-50'>HTTP Request</h3>
+<h2 id='schedule'><strong>SCHEDULE</strong></h2><h2 id='get-schedule-info'>Get Schedule Info</h2><h3 id='http-request-51'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5760,7 +6171,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"shedule_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-52'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-53'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5817,7 +6228,7 @@
 <td>Schedule object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='create-new-schedule'>Create New Schedule</h2><h3 id='http-request-51'>HTTP Request</h3>
+<h2 id='create-new-schedule'>Create New Schedule</h2><h3 id='http-request-52'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5841,7 +6252,7 @@
   </span><span class="nl">"is_holiday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_overnight"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-53'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-54'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5913,7 +6324,7 @@
 <td>New Schedule id</td>
 </tr>
 </tbody></table>
-<h2 id='update-schedule'>Update Schedule</h2><h3 id='http-request-52'>HTTP Request</h3>
+<h2 id='update-schedule'>Update Schedule</h2><h3 id='http-request-53'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -5938,7 +6349,7 @@
   </span><span class="nl">"is_holiday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_overnight"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-54'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-55'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6018,7 +6429,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='search-schedules'>Search Schedules</h2><h3 id='http-request-53'>HTTP Request</h3>
+<h2 id='search-schedules'>Search Schedules</h2><h3 id='http-request-54'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6029,7 +6440,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-55'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-56'>Request data: JSON string with the following elements</h3>
 <p>Must be at least one of parameters: name, keyword</p>
 
 <table><thead>
@@ -6117,7 +6528,7 @@
 <td>Count of finded objects</td>
 </tr>
 </tbody></table>
-<h2 id='delete-schedule'>Delete Schedule</h2><h3 id='http-request-54'>HTTP Request</h3>
+<h2 id='delete-schedule'>Delete Schedule</h2><h3 id='http-request-55'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/schedule/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6128,7 +6539,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-56'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-57'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6180,7 +6591,7 @@
 </tbody></table>
 <h2 id='rate'><ins><strong>RATE</strong></ins></h2>
 <p>Rate API for iBuildApp Timesheets, handling getting rate information, creating/deleting/updating a rate, and searching for rates.</p>
-<h2 id='get-rate-info'>Get Rate Info</h2><h3 id='http-request-55'>HTTP Request</h3>
+<h2 id='get-rate-info'>Get Rate Info</h2><h3 id='http-request-56'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6191,7 +6602,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-57'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-58'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6253,7 +6664,7 @@
 <td>Rate object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='create-new-rate'>Create New Rate</h2><h3 id='http-request-56'>HTTP Request</h3>
+<h2 id='create-new-rate'>Create New Rate</h2><h3 id='http-request-57'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6268,7 +6679,7 @@
     </span><span class="nl">"duration_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"days"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-58'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-59'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6344,7 +6755,7 @@
 <td>ID of the new Rate entity</td>
 </tr>
 </tbody></table>
-<h2 id='update-rate'>Update Rate</h2><h3 id='http-request-57'>HTTP Request</h3>
+<h2 id='update-rate'>Update Rate</h2><h3 id='http-request-58'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6356,7 +6767,7 @@
     </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_rate1"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-59'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-60'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6431,7 +6842,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='search-rates'>Search Rates</h2><h3 id='http-request-58'>HTTP Request</h3>
+<h2 id='search-rates'>Search Rates</h2><h3 id='http-request-59'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6442,7 +6853,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-60'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-61'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6534,7 +6945,15 @@
 <td>Count of finded objects</td>
 </tr>
 </tbody></table>
-<h2 id='delete-rate'>Delete Rate</h2><h3 id='http-request-59'>HTTP Request</h3>
+
+<p>Data- <em>array of Rate objects:</em><br>
+• <strong>id</strong> (Integer) Rate ID<br>
+• <strong>schedule_id</strong> (Integer) Schedule ID<br>
+• <strong>user_id</strong> (Integer) User ID<br>
+• <strong>name</strong> (String) <br>
+• <strong>amount</strong> (Integer) Duration in duration unit<br>
+• <strong>duration_unit</strong> (String)  May be: minutes, hours, days, weeks, months, years<br></p>
+<h2 id='delete-rate'>Delete Rate</h2><h3 id='http-request-60'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/rate/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6545,7 +6964,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-61'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-62'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6597,7 +7016,7 @@
 </tbody></table>
 <h2 id='time-entry'><ins><strong>TIME ENTRY</strong></ins></h2>
 <p>Time Entry API for iBuildApp Timesheets, handling getting time entry information, creating/deleting/updating a time entry, getting time entry status history, setting time entry status, and searching for time entries.</p>
-<h2 id='start-time-tracking'>Start Time Tracking</h2><h3 id='http-request-60'>HTTP Request</h3>
+<h2 id='start-time-tracking'>Start Time Tracking</h2><h3 id='http-request-61'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/start</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6610,7 +7029,7 @@
     </span><span class="nl">"location"</span><span class="p">:[</span><span class="mf">-37.270245</span><span class="p">,</span><span class="w"> </span><span class="mf">-119.989356</span><span class="p">],</span><span class="w">
     </span><span class="nl">"comment"</span><span class="p">:</span><span class="s2">"my comment"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-62'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-63'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6670,7 +7089,7 @@
 <td>Error description or successful info message: &quot;Successfully started.&quot;,&quot;Task not found.&quot;,&quot;Found started TimeEntry.”</td>
 </tr>
 </tbody></table>
-<h2 id='stop-time-tracking'>Stop Time Tracking</h2><h3 id='http-request-61'>HTTP Request</h3>
+<h2 id='stop-time-tracking'>Stop Time Tracking</h2><h3 id='http-request-62'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/stop</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6683,7 +7102,7 @@
     </span><span class="nl">"comment"</span><span class="p">:</span><span class="s2">"my comment2"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:[</span><span class="mf">-37.270245</span><span class="p">,</span><span class="w"> </span><span class="mf">-119.989356</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-63'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-64'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6743,7 +7162,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='create-new-timesheet-entry'>Create New Timesheet Entry</h2><h3 id='http-request-62'>HTTP Request</h3>
+<h2 id='create-new-timesheet-entry'>Create New Timesheet Entry</h2><h3 id='http-request-63'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/create</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6759,7 +7178,7 @@
     </span><span class="nl">"location"</span><span class="p">:[</span><span class="mf">-37.270245</span><span class="p">,</span><span class="w"> </span><span class="mf">-119.989356</span><span class="p">],</span><span class="w">
     </span><span class="nl">"comment"</span><span class="p">:</span><span class="s2">"my comment"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-64'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-65'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6844,7 +7263,7 @@
 <td>ID of created TimeEntry</td>
 </tr>
 </tbody></table>
-<h2 id='get-time-entry-info'>Get Time Entry Info</h2><h3 id='http-request-63'>HTTP Request</h3>
+<h2 id='get-time-entry-info'>Get Time Entry Info</h2><h3 id='http-request-64'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/get</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -6861,7 +7280,7 @@
     </span><span class="s2">"breaks"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-65'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-66'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7001,7 +7420,7 @@
 <td>TimeEntry Object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='update-time-entry'>Update Time Entry</h2><h3 id='http-request-64'>HTTP Request</h3>
+<h2 id='update-time-entry'>Update Time Entry</h2><h3 id='http-request-65'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/update</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7013,7 +7432,7 @@
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"task_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-66'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-67'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7087,7 +7506,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='search-time-entries'>Search Time Entries</h2><h3 id='http-request-65'>HTTP Request</h3>
+<h2 id='search-time-entries'>Search Time Entries</h2><h3 id='http-request-66'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/search</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7110,7 +7529,7 @@
     </span><span class="s2">"projects"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-67'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-68'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7269,7 +7688,7 @@
 <td>TimeEntry Object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='search-time-entries-with-grouping'>Search Time Entries with Grouping</h2><h3 id='http-request-66'>HTTP Request</h3>
+<h2 id='search-time-entries-with-grouping'>Search Time Entries with Grouping</h2><h3 id='http-request-67'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/search_group</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7286,7 +7705,7 @@
     </span><span class="s2">"projects"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-68'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-69'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7466,7 +7885,68 @@
 <td>Count of Objects</td>
 </tr>
 </tbody></table>
-<h2 id='delete-time-entry'>Delete Time Entry</h2><h3 id='http-request-67'>HTTP Request</h3>
+
+<p>Data:<br>
+• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
+• <strong>groups</strong>: - <em>array of objects:</em><br>
+&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
+&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
+&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>user_id</strong> (Integer) User ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>task_id</strong> (Integer) Task ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>start_time</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>end_time</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>approve_date</strong> (Timestamp) Date of approve TimeEntry<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>breaks</strong> (Integer)  Count of breaks<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>comments</strong> (Integer)  Count of comments<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer)  Duration in seconds<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: in-progress, rejected, approved<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>payment_status</strong> (String) - May be: pending, payed<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>start_location</strong> (Array) - array of coordinates<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>end_location</strong> (Array) - array of coordinates<br></p>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
+• <strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of User<br>
+&ensp;&ensp;&ensp;&ensp;• object - User<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
+
+<p>if &quot;with&quot; = [&quot;tasks&quot;]:<br>
+• <strong>tasks</strong>: - <em>array of *</em>[key:object]** :<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Task<br>
+&ensp;&ensp;&ensp;&ensp;• object - Task<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - Array of related User ID<br></p>
+
+<p>if &quot;with&quot; = [&quot;projects&quot;]:<br>
+• <strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:<em><br>
+&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Project<br>
+&ensp;&ensp;&ensp;&ensp;• object - Project<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, weeks, months, years<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - Array of related Task ID<br></p>
+<h2 id='delete-time-entry'>Delete Time Entry</h2><h3 id='http-request-68'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/delete</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7477,7 +7957,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-69'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-70'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7527,7 +8007,7 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
-<h2 id='get-status-history-of-time-entry'>Get Status History of Time Entry</h2><h3 id='http-request-68'>HTTP Request</h3>
+<h2 id='get-status-history-of-time-entry'>Get Status History of Time Entry</h2><h3 id='http-request-69'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7538,7 +8018,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-70'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-71'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7602,7 +8082,7 @@
 <td>Approval History object with all fields or empty object</td>
 </tr>
 </tbody></table>
-<h2 id='start-break-of-time-entry'>Start Break of Time Entry</h2><h3 id='http-request-69'>HTTP Request</h3>
+<h2 id='start-break-of-time-entry'>Start Break of Time Entry</h2><h3 id='http-request-70'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/break_start</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7613,7 +8093,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-71'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-72'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7669,7 +8149,7 @@
 <td>ID of Break</td>
 </tr>
 </tbody></table>
-<h2 id='stop-break-of-time-entry'>Stop Break of Time Entry</h2><h3 id='http-request-70'>HTTP Request</h3>
+<h2 id='stop-break-of-time-entry'>Stop Break of Time Entry</h2><h3 id='http-request-71'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/break_stop</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7680,7 +8160,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-72'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-73'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7732,7 +8212,7 @@
 </tbody></table>
 <h2 id='breaks-of-time-entry'>Breaks of Time Entry</h2>
 <p>Return duration of breaks in seconds</p>
-<h3 id='http-request-71'>HTTP Request</h3>
+<h3 id='http-request-72'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/breaks</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7743,7 +8223,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="mi">26</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-73'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-74'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7822,7 +8302,7 @@
 </tbody></table>
 <h2 id='approve-time-entries'>Approve Time Entries</h2>
 <p>Return duration of breaks in seconds</p>
-<h3 id='http-request-72'>HTTP Request</h3>
+<h3 id='http-request-73'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/approve</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7833,7 +8313,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_ids"</span><span class="p">:[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-74'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-75'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7886,7 +8366,7 @@
 <td>Count of approved time entry</td>
 </tr>
 </tbody></table>
-<h2 id='export-time-entries'>Export Time Entries</h2><h3 id='http-request-73'>HTTP Request</h3>
+<h2 id='export-time-entries'>Export Time Entries</h2><h3 id='http-request-74'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/export</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7898,7 +8378,7 @@
   </span><span class="nl">"time_entry_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">],</span><span class="w">
   </span><span class="nl">"with_headers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-75'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-76'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7936,7 +8416,7 @@
 <blockquote>
 <p>200 Response body (text/csv):</p>
 </blockquote>
-<h3 id='response-data-file'>Response data: file</h3>
+<h3 id='response-data-file-2'>Response data: file</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7952,7 +8432,7 @@
 </tbody></table>
 <h2 id='calculate-a-cost-of-selected-time_entries-for-invoice'>Calculate a cost of selected time_entries for invoice.</h2>
 <p>Return duration in seconds and cost for selected APPROVED time entry</p>
-<h3 id='http-request-74'>HTTP Request</h3>
+<h3 id='http-request-75'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/ts/calc</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -7963,7 +8443,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"time_entry_ids"</span><span class="p">:[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-76'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-77'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8018,7 +8498,7 @@
 <td>Full cost (with minus breaks)</td>
 </tr>
 </tbody></table>
-<h2 id='add-comment-to-time-entry'>Add comment to Time Entry</h2><h3 id='http-request-75'>HTTP Request</h3>
+<h2 id='add-comment-to-time-entry'>Add comment to Time Entry</h2><h3 id='http-request-76'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/add_comment</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8030,7 +8510,7 @@
   </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content text"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-77'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-78'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8085,7 +8565,7 @@
 <td>ID of created comment</td>
 </tr>
 </tbody></table>
-<h2 id='get-comments-of-time-entry'>Get comments of Time Entry</h2><h3 id='http-request-76'>HTTP Request</h3>
+<h2 id='get-comments-of-time-entry'>Get comments of Time Entry</h2><h3 id='http-request-77'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/ts/comments</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8097,7 +8577,7 @@
     </span><span class="nl">"time_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"users"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-78'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-79'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8183,7 +8663,7 @@
     </span><span class="nl">"client_id"</span><span class="p">:</span><span class="s2">"*****t1oz6xr7yDyxLqpvK*****"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="s2">"****dXaXtc0QiI3E223Q54****"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-77'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-78'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/integration/{INTEGRATION}/update</code></p>
 
 <p>{INTEGRATION} - string of list: qbo, xero, adp</p>
@@ -8197,7 +8677,7 @@
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Update success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-79'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-80'>Request data: JSON string with the following elements</h3>
 <p>Must be at least one of parameters: client_id, client_secret, settings</p>
 
 <table><thead>
@@ -8253,7 +8733,7 @@
 </tbody></table>
 <h2 id='get-auth-url-for-integration'>Get Auth URL for integration</h2>
 <p>Return link for GET-request. </p>
-<h3 id='http-request-78'>HTTP Request</h3>
+<h3 id='http-request-79'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/integration/{INTEGRATION}/authorize</code></p>
 
 <p>{INTEGRATION} - string of list: qbo, xero, adp</p>
@@ -8266,7 +8746,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-80'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-81'>Request data: JSON string with the following elements</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8320,7 +8800,7 @@
 </tbody></table>
 <h2 id='delete-for-integration'>Delete for integration</h2>
 <p>Delete information of this integration from TimeSheets</p>
-<h3 id='http-request-79'>HTTP Request</h3>
+<h3 id='http-request-80'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/integration/{INTEGRATION}/disconnect</code></p>
 
 <p>{INTEGRATION} - string of list: qbo, xero, adp</p>
@@ -8333,7 +8813,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-81'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-82'>Request data: JSON string with the following elements</h3>
 <p>Must be at least one of parameters: client_id, client_secret, settings</p>
 
 <table><thead>
@@ -8388,7 +8868,7 @@
 <h2 id='import-employees'>Import Employees</h2>
 <p>Import Employees as Users. Import Employee rates as User rates (optional). Import Customers as Clients (optional).
 For Xero: import Vendors as Users.</p>
-<h3 id='http-request-80'>HTTP Request</h3>
+<h3 id='http-request-81'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/integration/xero/import_employees</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8399,7 +8879,7 @@ For Xero: import Vendors as Users.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-82'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-83'>Request data: JSON string with the following elements</h3>
 <p>Must be at least one of parameters: client_id, client_secret, settings</p>
 
 <table><thead>
@@ -8488,7 +8968,7 @@ For Xero: import Vendors as Users.</p>
 <h2 id='import-customers'>Import Customers</h2>
 <p>Import Customers as Clients. Import linked Projects and Tasks. 
 Xero: Projects and tasks can not be updated, only imported (if not present).</p>
-<h3 id='http-request-81'>HTTP Request</h3>
+<h3 id='http-request-82'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/integration/xero/import_customers</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8499,7 +8979,7 @@ Xero: Projects and tasks can not be updated, only imported (if not present).</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-83'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-84'>Request data: JSON string with the following elements</h3>
 <p>Must be at least one of parameters: client_id, client_secret, settings</p>
 
 <table><thead>
@@ -8628,7 +9108,7 @@ Xero: Projects and tasks can not be updated, only imported (if not present).</p>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - ID TimeSheets Task<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object: - <em>TimeSheets Task</em><br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> - <em>Task name</em> <br></p>
-<h2 id='export-timeentries'>Export TimeEntries</h2><h3 id='http-request-82'>HTTP Request</h3>
+<h2 id='export-timeentries'>Export TimeEntries</h2><h3 id='http-request-83'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/integration/qbo/export_timeentries</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
@@ -8639,7 +9119,7 @@ Xero: Projects and tasks can not be updated, only imported (if not present).</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"time_entry_ids"</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-84'>Request data: JSON string with the following elements</h3>
+</span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-85'>Request data: JSON string with the following elements</h3>
 <p>Must be at least one of parameters: client_id, client_secret, settings</p>
 
 <table><thead>
