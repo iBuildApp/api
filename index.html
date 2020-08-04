@@ -785,8 +785,9 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>id</strong> (Integer) - <br>
+<p><strong>Data</strong>:<br></p>
+
+<p>• <strong>id</strong> (Integer) - <br>
 • <strong>email</strong> (String) - <br>
 • <strong>first_name</strong> (String) - <br>
 • <strong>last_name</strong> (String) - <br>
@@ -938,8 +939,9 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>email</strong> (String. REQUIRED) - <br>
+<p>Data:<br></p>
+
+<p>• <strong>email</strong> (String. REQUIRED) - <br>
 • <strong>password</strong> (String) - Lengh need &gt;=8 and &lt;=15 characters<br>
 • <strong>first_name</strong> (String) - <br>
 • <strong>last_name</strong> (String) - <br>
@@ -1229,11 +1231,14 @@
 </tr>
 </tbody></table>
 
-<p>Data (Array) - <em>array of User objects:</em><br>
-• <strong>id</strong> (Integer)<br>
-• <strong>email</strong> (String)<br>
-• <strong>first_name</strong> (String)<br>
-• <strong>last_name</strong> (String)<br></p>
+<p>Data (Array) - <em>array of User objects:</em><br></p>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>first_name</strong> (String)<br></li>
+<li><strong>last_name</strong> (String)<br></li>
+</ul>
 <h2 id='search-users-with-grouping'>Search Users with Grouping</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -1390,31 +1395,40 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
-• <strong>groups</strong>: - <em>array of objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>sex</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>position</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float) - <em>hourly rate of user</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>created</strong> (Timestamp) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>updated</strong> (Timestamp) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>activated</strong> (Boolean) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>settings</strong> (Array) - <em>user properties for application</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) - <em>link to user avatar</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>teams</strong> (Array) - <em>IDs of usergroups</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> (String) - <em>Notes for admin. Visible only for admin.</em><br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (Date) - YYYY-MM-DD<br></p>
+<p>Data:<br></p>
+
+<ul>
+<li><strong>count</strong> (Integer): - <em>Count of finded groups</em><br></li>
+<li><strong>groups</strong>: - <em>array of objects:</em><br>
+
+<ul>
+<li><strong>value</strong> - Value of grouping field <br></li>
+<li><strong>count</strong> (Integer) - Count of items in group<br></li>
+<li><strong>items</strong> - Array of object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>email</strong> (String) <br></li>
+<li><strong>first_name</strong> (String) <br></li>
+<li><strong>last_name</strong> (String) <br></li>
+<li><strong>sex</strong> (String) <br></li>
+<li><strong>position</strong> (String) <br></li>
+<li><strong>hourly_rate</strong> (Float) - <em>hourly rate of user</em><br></li>
+<li><strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br></li>
+<li><strong>created</strong> (Timestamp) - <br></li>
+<li><strong>updated</strong> (Timestamp) - <br></li>
+<li><strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br></li>
+<li><strong>activated</strong> (Boolean) - <br></li>
+<li><strong>settings</strong> (Array) - <em>user properties for application</em><br></li>
+<li><strong>picture</strong> (String) - <em>link to user avatar</em><br></li>
+<li><strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br></li>
+<li><strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br></li>
+<li><strong>teams</strong> (Array) - <em>IDs of usergroups</em><br></li>
+<li><strong>notes</strong> (String) - <em>Notes for admin. Visible only for admin.</em><br></li>
+<li><strong>birth_date</strong> (Date) - YYYY-MM-DD<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='delete-user'>Delete User</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -1599,27 +1613,35 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>current_tasks</strong>: - <em>array of Task objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (Integer) Project ID<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - array of IDs related Users<br></p>
+<p>Data:<br></p>
 
-<p>• <strong>current_time_entry</strong>: - <em>TimeEntry object:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>user_id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>task_id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>schedule_id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>start_time</strong> (Timestamp) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>end_time</strong> (Timestamp) (optional, if TimeEntry ended)<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>payment_status</strong> (String) May be: pending, payed<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>breaks</strong> (Integer)  Count of breaks<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>comments</strong> (Integer)  Count of comments<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br></p>
+<ul>
+<li><p><strong>current_tasks</strong>: - <em>array of Task objects:</em><br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (String) <br></li>
+<li><strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br></li>
+<li><strong>project</strong> (Integer) Project ID<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>users</strong> (Array) - array of IDs related Users<br></li>
+</ul></li>
+<li><p><strong>current_time_entry</strong>: - <em>TimeEntry object:</em><br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>user_id</strong> (Integer) <br></li>
+<li><strong>task_id</strong> (Integer) <br></li>
+<li><strong>schedule_id</strong> (Integer) <br></li>
+<li><strong>status</strong> (String)  May be: in-progress, rejected, approved<br></li>
+<li><strong>start_time</strong> (Timestamp) <br></li>
+<li><strong>end_time</strong> (Timestamp) (optional, if TimeEntry ended)<br></li>
+<li><strong>payment_status</strong> (String) May be: pending, payed<br></li>
+<li><strong>breaks</strong> (Integer)  Count of breaks<br></li>
+<li><strong>comments</strong> (Integer)  Count of comments<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+</ul></li>
+</ul>
 <h2 id='get-user-history'>Get User History</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -1760,6 +1782,82 @@
 <td>Current server Unix timestamp</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li><strong>time_entries</strong> (Array) : - <em>TimeEntry object:</em><br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>user_id</strong> (Integer) <br></li>
+<li><strong>task_id</strong> (Integer) <br></li>
+<li><strong>schedule_id</strong> (Integer) <br></li>
+<li><strong>status</strong> (String)  May be: in-progress, rejected, approved<br></li>
+<li><strong>start_time</strong> (Timestamp) <br></li>
+<li><strong>end_time</strong> (Timestamp) (optional, if TimeEntry ended)<br></li>
+<li><strong>payment_status</strong> (String) May be: pending, payed<br></li>
+<li><strong>breaks</strong> (Integer)  Count of breaks<br></li>
+<li><strong>comments</strong> (Integer)  Count of comments<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>created</strong> (Timestamp) <br></li>
+<li><strong>updated</strong> (Timestamp) <br></li>
+<li><strong>approve_date</strong> (Timestamp) (optional, if set)<br></li>
+<li><strong>start_location</strong> (Array) - array of coordinates<br></li>
+<li><strong>end_location</strong> (Array) - array of coordinates<br></li>
+</ul></li>
+</ul>
+
+<p>if(&quot;with&quot;=[&quot;tasks&quot;])    :<br></p>
+
+<ul>
+<li><strong>tasks</strong> (Array of <strong>[key:object]</strong>):<br>
+
+<ul>
+<li><strong>key</strong> (Integer) - Task ID <br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>id</strong> (Integer) - Task ID <br></li>
+<li><strong>project</strong> (Integer) - Project ID <br></li>
+<li><strong>name</strong> (String)  <br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done  <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if(&quot;with&quot;=[&quot;users&quot;])    :<br>  </p>
+
+<ul>
+<li><strong>users</strong> (Array of <strong>[key:object]</strong><br>
+
+<ul>
+<li><strong>key</strong> (Integer) - User ID <br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>id</strong> (Integer) - User ID <br></li>
+<li><strong>first_name</strong> (String)  <br></li>
+<li><strong>last_name</strong> (String)  <br></li>
+<li><strong>picture</strong> (String) - link to user avatar <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if(&quot;with&quot;=[&quot;projects&quot;])    :<br>  </p>
+
+<ul>
+<li><strong>projects</strong> (Array of <strong>[key:object]</strong><br>
+
+<ul>
+<li><strong>key</strong> (Integer) - Project ID <br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>id</strong> (Integer) - Project ID <br></li>
+<li><strong>name</strong> (String) -  <br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='group'><ins><strong>GROUP</strong></ins></h2>
 <p>Group/Team API for iBuildApp Timesheets, handling getting group/team information, creating/deleting/updating a group/team, getting user(s) in a group/team, adding/deleting user(s) from group/team, and searching for group/team(s)</p>
 <h2 id='get-group-info'>Get Group Info</h2>
@@ -1834,6 +1932,15 @@
 <td>Group object with all fields or empty object</td>
 </tr>
 </tbody></table>
+
+<p><strong>data</strong> (Group object):<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (Integer) <br></li>
+<li><strong>status</strong> (String) - May be: &quot;active&quot; OR &quot;inactive&quot;<br></li>
+<li><strong>pay_rate</strong> (Float) <br></li>
+</ul>
 <h2 id='create-new-group'>Create New Group</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -2088,6 +2195,19 @@
 <td></td>
 </tr>
 </tbody></table>
+
+<p>Data:<br></p>
+
+<ul>
+<li><p><strong>time_entries</strong> (Array): - <em>Array of Group objects</em>:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (Integer) <br></li>
+<li><strong>status</strong> (String) - May be: &quot;active&quot; OR &quot;inactive&quot;<br></li>
+<li><strong>pay_rate</strong> (Float) <br></li>
+</ul></li>
+</ul>
 <h2 id='add-user-to-group'>Add User to Group</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -2318,23 +2438,26 @@
 </tr>
 </tbody></table>
 
-<p>Data: array of User object:<br>
-• <strong>id</strong> (Integer)<br>
-• <strong>email</strong> (String)<br>
-• <strong>first_name</strong> (String)<br>
-• <strong>last_name</strong> (String)<br>
-• <strong>hourly_rate</strong> (Float)<br>
-• <strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br>
-• <strong>created</strong> (Timestamp) - <br>
-• <strong>updated</strong> (Timestamp) - <br>
-• <strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br>
-• <strong>activated</strong> (Boolean) - <br>
-• <strong>settings</strong> (Array) - <em>user properties for application</em>. Default: {&quot;datetime_format&quot;: &quot;d/m/Y h:ia&quot;}<br>
-• <strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br>
-• <strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br>
-• <strong>picture</strong> (String) <br>
-• <strong>teams</strong> (Array) - Array of usergroup ID<br>
-• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
+<p>Data: array of User object:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>first_name</strong> (String)<br></li>
+<li><strong>last_name</strong> (String)<br></li>
+<li><strong>hourly_rate</strong> (Float)<br></li>
+<li><strong>roles</strong> (Array) - <em>role in app. Default - ROLE_USER</em><br></li>
+<li><strong>created</strong> (Timestamp) - <br></li>
+<li><strong>updated</strong> (Timestamp) - <br></li>
+<li><strong>exported</strong> (Timestamp) - Date + Time of export to QBO,Xero,ADP<br></li>
+<li><strong>activated</strong> (Boolean) - <br></li>
+<li><strong>settings</strong> (Array) - <em>user properties for application</em>. Default: {&quot;datetime_format&quot;: &quot;d/m/Y h:ia&quot;}<br></li>
+<li><strong>paid_hours</strong> (Float) - <em>total number of paid hours</em><br></li>
+<li><strong>unapproved_hours</strong> (Float) - <em>total number of unapproved hours</em><br></li>
+<li><strong>picture</strong> (String) <br></li>
+<li><strong>teams</strong> (Array) - Array of usergroup ID<br></li>
+<li><strong>birth_date</strong> (String) - YYYY-MM-DD <br></li>
+</ul>
 <h2 id='delete-group'>Delete Group</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -2474,6 +2597,23 @@
 <td>Client object with all fields or empty object</td>
 </tr>
 </tbody></table>
+
+<p>Data:  Client object:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) - Client ID<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>contact_info</strong> (String)<br></li>
+<li><strong>address</strong> (String)<br></li>
+<li><strong>state</strong> (String)<br></li>
+<li><strong>city</strong> (String)<br></li>
+<li><strong>website</strong> (String)<br></li>
+<li><strong>industry</strong> (String)<br></li>
+<li><strong>notes</strong> (String)<br></li>
+<li><strong>status</strong> (String) - May be: &quot;active&quot;, &quot;inactive&quot;<br></li>
+<li><strong>projects</strong> (Array of Integer) - array of IDs related Projects<br></li>
+</ul>
 <h2 id='create-new-client'>Create New Client</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -2551,10 +2691,10 @@
 <tr>
 <td>notes</td>
 <td>String</td>
-<td></td>
+<td>Admin comments.</td>
 </tr>
 <tr>
-<td>is_active</td>
+<td>status</td>
 <td>Boolean</td>
 <td></td>
 </tr>
@@ -2665,7 +2805,7 @@
 <tr>
 <td>notes</td>
 <td>String</td>
-<td></td>
+<td>Admin comments.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -2720,7 +2860,8 @@
 <p>Request body (application/json):</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"with"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"projects"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-data-json-string-with-the-following-elements-22'>Request data: JSON string with the following elements</h3>
 <table><thead>
@@ -2736,9 +2877,9 @@
 <td>User ID</td>
 </tr>
 <tr>
-<td>client_id</td>
-<td>Integer</td>
-<td>Client ID</td>
+<td>client_ids</td>
+<td>Array of Integer</td>
+<td>Client IDs</td>
 </tr>
 <tr>
 <td>email</td>
@@ -2768,7 +2909,7 @@
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td></td>
+<td>Default: 10</td>
 </tr>
 <tr>
 <td>offset</td>
@@ -2856,21 +2997,44 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>clients</strong>: - <em>array of Client objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>phone</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>contact_info</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>address</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>state</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>city</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>industry</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>website</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> - &quot;active&quot; OR not present<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>projects</strong> - array of IDs related Projects<br></p>
+<p>Data:<br></p>
+
+<ul>
+<li><strong>clients</strong>: - <em>array of Client objects:</em><br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String) <br></li>
+<li><strong>phone</strong> (String) <br></li>
+<li><strong>email</strong> (String) <br></li>
+<li><strong>contact_info</strong> (String) <br></li>
+<li><strong>address</strong> (String) <br></li>
+<li><strong>state</strong> (String) <br></li>
+<li><strong>city</strong> (String) <br></li>
+<li><strong>industry</strong> (String) <br></li>
+<li><strong>website</strong> (String) <br></li>
+<li><strong>notes</strong> (String) <br></li>
+<li><strong>status</strong> - (String) - May be: &quot;active&quot; OR &quot;inactive&quot;<br></li>
+<li><strong>projects</strong> - (Array) -  array of IDs related Projects<br></li>
+</ul></li>
+</ul>
+
+<p>if (&quot;with&quot;=[&quot;projects&quot;]):<br></p>
+
+<ul>
+<li><strong>projects</strong>: - array of <strong>[key:object]</strong>:<br>
+
+<ul>
+<li><strong>key</strong> - Project ID<br></li>
+<li>object :<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>status</strong> (String) - May be: &quot;new&quot;, &quot;in-progress&quot;, &quot;cancelled&quot;, &quot;done&quot;<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='search-clients-with-grouping'>Search Clients with Grouping</h2><h3 id='http-request-21'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/search_group</code></p>
 
@@ -3034,13 +3198,7 @@
                 </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project #2"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">8</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">6</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">4</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">2</span><span class="w">
-                </span><span class="p">]</span><span class="w">
+                </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"6"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
@@ -3051,13 +3209,7 @@
                 </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project #1"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="mi">9</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">7</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">5</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                    </span><span class="mi">1</span><span class="w">
-                </span><span class="p">]</span><span class="w">
+                </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3092,29 +3244,51 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>groups</strong>: - <em>array of objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - value of grouping field<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> - count of items in group<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>items[object]</strong> - array of Client objects:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>address</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>state</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>city</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>industry</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> - (String) &quot;active&quot; OR not present<br></p>
+<p>Data:<br></p>
 
-<p>• <strong>projects[key:object]</strong> - <em>list of related projects</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - Project ID<br>
-&ensp;&ensp;&ensp;&ensp;• object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - array of ID related tasks<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: &quot;new&quot;, &quot;in-progress&quot;, &quot;cancelled&quot;, &quot;done&quot;<br></p>
+<ul>
+<li><strong>groups</strong>: - <em>array of objects:</em><br>
+
+<ul>
+<li><strong>value</strong> - value of grouping field<br></li>
+<li><strong>count</strong> - count of items in group<br></li>
+<li><strong>items[object]</strong> - array of Client objects:<br>
+
+<ul>
+<li>object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>address</strong> (String)<br></li>
+<li><strong>state</strong> (String)<br></li>
+<li><strong>city</strong> (String)<br></li>
+<li><strong>industry</strong> (String)<br></li>
+<li><strong>notes</strong> <br></li>
+<li><strong>status</strong> - (String) &quot;active&quot; OR not present<br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if (&quot;with&quot;=[&quot;projects&quot;]):<br></p>
+
+<ul>
+<li><strong>projects[key:object]</strong> - <em>list of related projects</em><br>
+
+<ul>
+<li><strong>key</strong> - Project ID<br></li>
+<li>object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>tasks</strong> (Array of Integer) - array of ID related tasks<br></li>
+<li><strong>status</strong> (String) - May be: &quot;new&quot;, &quot;in-progress&quot;, &quot;cancelled&quot;, &quot;done&quot;<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='export-clients-to-csv'>Export Clients to CSV</h2><h3 id='http-request-22'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/export_csv</code></p>
 
@@ -3201,8 +3375,9 @@
 </tr>
 </tbody></table>
 
-<p>Format of CSV:<br>
-• <strong>id</strong> <br>
+<p>Format of CSV:<br></p>
+
+<p>• <strong>id</strong> <br>
 • <strong>email</strong> <br>
 • <strong>name</strong> <br>
 • <strong>contact_info</strong> <br>
@@ -3213,7 +3388,8 @@
 • <strong>website</strong> <br>
 • <strong>notes</strong> <br>
 • <strong>status</strong> - &quot;active&quot; OR not present<br>
-• <strong>projects</strong> - Array of IDs related projects<br></p>
+(if &quot;with&quot;=[&quot;projects&quot;]):<br>
+• <strong>projects</strong> -  Array of IDs related projects<br></p>
 <h2 id='delete-client'>Delete Client</h2><h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/client/delete</code></p>
 
@@ -3275,6 +3451,8 @@
 <td>Error description or successful info message</td>
 </tr>
 </tbody></table>
+
+<hr>
 <h2 id='invoice'><ins><strong>INVOICE</strong></ins></h2>
 <p>Invoice API for iBuildApp Timesheets, handling getting invoice information, creating/deleting/updating an invoice, changing invoice status, and searching for invoice(s).</p>
 <h2 id='get-invoice-info'>Get Invoice Info</h2><h3 id='http-request-24'>HTTP Request</h3>
@@ -3341,6 +3519,16 @@
 <td>Invoice object with all fields or empty object</td>
 </tr>
 </tbody></table>
+
+<p>Data:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>due_date</strong> (Timestamp) - <br></li>
+<li><strong>payed_date</strong> (Timestamp) <br></li>
+<li><strong>amount</strong> (Float) -<br></li>
+<li><strong>status</strong> (String) - May be: &quot;new&quot;, &quot;paid&quot; <br></li>
+</ul>
 <h2 id='create-new-invoice'>Create New Invoice</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -3603,7 +3791,7 @@
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td></td>
+<td>Default = 10</td>
 </tr>
 <tr>
 <td>offset</td>
@@ -3658,6 +3846,16 @@
 <td>Count of objects</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong> (Array): array of Invoice object:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>due_date</strong> (Timestamp) - <br></li>
+<li><strong>payed_date</strong> (Timestamp) <br></li>
+<li><strong>amount</strong> (Float) -<br></li>
+<li><strong>status</strong> (String) - May be: &quot;new&quot;, &quot;paid&quot; <br></li>
+</ul>
 <h2 id='search-invoices-with-grouping'>Search Invoices with Grouping</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -3770,6 +3968,27 @@
 <td>Count of groups</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>:<br></p>
+
+<ul>
+<li><strong>count</strong> (Integer): - <em>Count of finded groups</em><br></li>
+<li><strong>groups</strong>: - <em>array of objects:</em><br>
+
+<ul>
+<li><strong>value</strong> - Value of grouping field <br></li>
+<li><strong>count</strong> (Integer) - Count of items in group<br></li>
+<li><strong>items</strong> - Array of object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>due_date</strong> (Timestamp) - <br></li>
+<li><strong>payed_date</strong> (Timestamp) <br></li>
+<li><strong>amount</strong> (Float) -<br></li>
+<li><strong>status</strong> (String) - May be: &quot;new&quot;, &quot;paid&quot; <br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='delete-invoice'>Delete Invoice</h2>
 <blockquote>
 <p>Request body (application/json):</p>
@@ -3988,6 +4207,32 @@
 <td>Count of finded comments</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>:<br></p>
+
+<ul>
+<li><p><strong>comments</strong> (Array): - <em>Array of Comment objects</em>:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>commentator</strong> (Integer) - User ID <br></li>
+<li><strong>content</strong> (String) - Text of comment<br></li>
+<li><strong>date</strong> (Timestamp) - Date of comment<br></li>
+</ul></li>
+<li><p><strong>users</strong> (Array of <strong>[key:object]</strong>): <br></p>
+
+<ul>
+<li><strong>key</strong> (Integer) - User ID <br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>first_name</strong> (String)  <br></li>
+<li><strong>last_name</strong> (String) <br></li>
+<li><strong>picture</strong> (String) - Link to user avatar<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='task'><ins><strong>TASK</strong></ins></h2>
 <p>Task API for iBuildApp Timesheets, handling getting task information, creating/deleting/updating a task, setting task status, adding/deleting user(s) from a task, and searching for task(s).</p>
 <h2 id='get-task-info'>Get Task Info</h2>
@@ -4115,6 +4360,92 @@
 <td>object with all fields or empty object</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>:<br></p>
+
+<ul>
+<li><strong>tasks</strong>: - <em>array of Task objects:</em><br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (String) <br></li>
+<li><strong>project</strong> (Integer) Project ID<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br></li>
+<li><strong>users</strong> (Array) - array of IDs related Users<br></li>
+<li><strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
+
+<ul>
+<li><strong>key</strong> (Integer) - TimeEntry ID<br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>user_id</strong> (Integer) <br></li>
+<li><strong>task_id</strong> (Integer) <br></li>
+<li><strong>schedule_id</strong> (Integer) <br></li>
+<li><strong>status</strong> (String)  May be: in-progress, rejected, approved<br></li>
+<li><strong>start_time</strong> (Timestamp) <br></li>
+<li><strong>end_time</strong> (Timestamp) (optional, if TimeEntry ended)<br></li>
+<li><strong>approve_date</strong> (Timestamp) (optional, if set)<br></li>
+<li><strong>payment_status</strong> (String) May be: pending, payed<br></li>
+<li><strong>breaks</strong> (Integer)  Count of breaks<br></li>
+<li><strong>comments</strong> (Integer)  Count of comments<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>start_location</strong> (Array of Float) - array of coordinates<br></li>
+<li><strong>end_location</strong> (Array of Float) - array of coordinates<br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br></p>
+
+<ul>
+<li><strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of User<br></li>
+<li>object - User<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>first_name</strong> (String)<br></li>
+<li><strong>last_name</strong> (String)<br></li>
+<li><strong>hourly_rate</strong> (Float)<br></li>
+<li><strong>picture</strong> (String) <br></li>
+<li><strong>birth_date</strong> (String) - YYYY-MM-DD <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;projects&quot;]:<br></p>
+
+<ul>
+<li><strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of Project<br></li>
+<li>object - Project<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>client_id</strong> (Integer) - Client ID<br></li>
+<li><strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>planned_start_date</strong> (Timestamp) <br></li>
+<li><strong>actual_start_date</strong> (Timestamp)  <br></li>
+<li><strong>planned_end_date</strong> (Timestamp)  <br></li>
+<li><strong>actual_end_date</strong> (Timestamp)  <br></li>
+<li><strong>estimated_duration</strong> (Float)<br></li>
+<li><strong>actual_duration</strong> (Float)  <br></li>
+<li><strong>tasks</strong> (Array of Integer) - Array of related Task ID<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='create-new-task'>Create New Task</h2><h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST /api/{app_path}/task/create</code></p>
 
@@ -4458,62 +4789,101 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>tasks</strong>: - <em>array of Task objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (Integer) Project ID<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - array of IDs related Users<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> (Integer) - TimeEntry ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object: <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>start_datetime</strong> (Timestamp) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>end_datetime</strong> (Timestamp) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) - Duration in seconds<br></p>
+<p><strong>Data</strong>:<br></p>
 
-<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
-• <strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of User<br>
-&ensp;&ensp;&ensp;&ensp;• object - User<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>teams</strong> (Array) - Array of usergroup ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
+<ul>
+<li><strong>tasks</strong>: - <em>array of Task objects:</em><br>
 
-<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
-• <strong>teams</strong>: - <em>array of *</em>[key:object]** UserGroup:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of UserGroup<br>
-&ensp;&ensp;&ensp;&ensp;• object - UserGroup<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: active, inactive <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>pay_rate</strong> (Float) - <br></p>
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (String) <br></li>
+<li><strong>project</strong> (Integer) Project ID<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br></li>
+<li><strong>users</strong> (Array) - array of IDs related Users<br></li>
+<li><strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
 
-<p>if &quot;with&quot; = [&quot;projects&quot;]:<br>
-• <strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Project<br>
-&ensp;&ensp;&ensp;&ensp;• object - Project<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - Array of related Task ID<br></p>
+<ul>
+<li><strong>key</strong> (Integer) - TimeEntry ID<br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>start_datetime</strong> (Timestamp) - <br></li>
+<li><strong>end_datetime</strong> (Timestamp) - <br></li>
+<li><strong>duration</strong> (Integer) - Duration in seconds<br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br></p>
+
+<ul>
+<li><strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of User<br></li>
+<li>object - User<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>first_name</strong> (String)<br></li>
+<li><strong>last_name</strong> (String)<br></li>
+<li><strong>hourly_rate</strong> (Float)<br></li>
+<li><strong>picture</strong> (String) <br></li>
+<li><strong>teams</strong> (Array) - Array of usergroup ID<br></li>
+<li><strong>birth_date</strong> (String) - YYYY-MM-DD <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br></p>
+
+<ul>
+<li><strong>teams</strong>: - <em>array of *</em>[key:object]** UserGroup:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of UserGroup<br></li>
+<li>object - UserGroup<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>notes</strong> (String)<br></li>
+<li><strong>status</strong> (String) - May be: active, inactive <br></li>
+<li><strong>pay_rate</strong> (Float) - <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;projects&quot;]:<br></p>
+
+<ul>
+<li><strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of Project<br></li>
+<li>object - Project<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>client_id</strong> (Integer) - Client ID<br></li>
+<li><strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>planned_start_date</strong> (Timestamp) <br></li>
+<li><strong>actual_start_date</strong> (Timestamp)  <br></li>
+<li><strong>planned_end_date</strong> (Timestamp)  <br></li>
+<li><strong>actual_end_date</strong> (Timestamp)  <br></li>
+<li><strong>estimated_duration</strong> (Float)<br></li>
+<li><strong>actual_duration</strong> (Float)  <br></li>
+<li><strong>tasks</strong> (Array) - Array of related Task ID<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='search-tasks-with-grouping'>Search Tasks with Grouping</h2><h3 id='http-request-37'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/search_group</code></p>
 
@@ -4699,66 +5069,108 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
-• <strong>groups</strong>: - <em>array of objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>project</strong> (Integer) Project ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) Duration in seconds<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - array of IDs related Tasks<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> (Integer) - TimeEntry ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object: <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>start_datetime</strong> (Timestamp) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>end_datetime</strong> (Timestamp) - <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> (Integer) - Duration in seconds<br></p>
+<p>Data:<br></p>
 
-<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
-• <strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of User<br>
-&ensp;&ensp;&ensp;&ensp;• object - User<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>email</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>last_name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>hourly_rate</strong> (Float)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>picture</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>teams</strong> (Array) - Array of usergroup ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>birth_date</strong> (String) - YYYY-MM-DD <br></p>
+<ul>
+<li><strong>count</strong> (Integer): - <em>Count of finded groups</em><br></li>
+<li><strong>groups</strong>: - <em>array of objects:</em><br>
 
-<p>if &quot;with&quot; = [&quot;users&quot;]:<br>
-• <strong>teams</strong>: - <em>array of *</em>[key:object]** UserGroup:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of UserGroup<br>
-&ensp;&ensp;&ensp;&ensp;• object - UserGroup<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>notes</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: active, inactive <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>pay_rate</strong> (Float) - <br></p>
+<ul>
+<li><strong>value</strong> - Value of grouping field <br></li>
+<li><strong>count</strong> (Integer) - Count of items in group<br></li>
+<li><strong>items</strong> - Array of object:<br>
 
-<p>if &quot;with&quot; = [&quot;projects&quot;]:<br>
-• <strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Project<br>
-&ensp;&ensp;&ensp;&ensp;• object - Project<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - Array of related Task ID<br></p>
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (String) <br></li>
+<li><strong>project</strong> (Integer) Project ID<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br></li>
+<li><strong>users</strong> (Array) - array of IDs related Tasks<br></li>
+<li><strong>entries</strong> (Array) - array of <strong>[key: value]</strong>: <br>
+
+<ul>
+<li><strong>key</strong> (Integer) - TimeEntry ID<br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>start_datetime</strong> (Timestamp) - <br></li>
+<li><strong>end_datetime</strong> (Timestamp) - <br></li>
+<li><strong>duration</strong> (Integer) - Duration in seconds<br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br></p>
+
+<ul>
+<li><strong>users</strong>: - <em>array of *</em>[key:object]** related Clients:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of User<br></li>
+<li>object - User<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>email</strong> (String)<br></li>
+<li><strong>first_name</strong> (String)<br></li>
+<li><strong>last_name</strong> (String)<br></li>
+<li><strong>hourly_rate</strong> (Float)<br></li>
+<li><strong>picture</strong> (String) <br></li>
+<li><strong>teams</strong> (Array) - Array of usergroup ID<br></li>
+<li><strong>birth_date</strong> (String) - YYYY-MM-DD <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;users&quot;]:<br></p>
+
+<ul>
+<li><strong>teams</strong>: - <em>array of *</em>[key:object]** UserGroup:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of UserGroup<br></li>
+<li>object - UserGroup<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>notes</strong> (String)<br></li>
+<li><strong>status</strong> (String) - May be: active, inactive <br></li>
+<li><strong>pay_rate</strong> (Float) - <br></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>if &quot;with&quot; = [&quot;projects&quot;]:<br></p>
+
+<ul>
+<li><strong>projects</strong>: - <em>array of *</em>[key:object]** related Projects:*<br>
+
+<ul>
+<li><strong>key</strong> - ID of Project<br></li>
+<li>object - Project<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>client_id</strong> (Integer) - Client ID<br></li>
+<li><strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>planned_start_date</strong> (Timestamp) <br></li>
+<li><strong>actual_start_date</strong> (Timestamp)  <br></li>
+<li><strong>planned_end_date</strong> (Timestamp)  <br></li>
+<li><strong>actual_end_date</strong> (Timestamp)  <br></li>
+<li><strong>estimated_duration</strong> (Float)<br></li>
+<li><strong>actual_duration</strong> (Float)  <br></li>
+<li><strong>tasks</strong> (Array) - Array of related Task ID<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='delete-task'>Delete Task</h2><h3 id='http-request-38'>HTTP Request</h3>
 <p><code>POST /timesheets/task/delete</code></p>
 
@@ -4957,7 +5369,7 @@
 </tr>
 </tbody></table>
 <h2 id='history-of-changes-task'>History of changes task.</h2><h3 id='http-request-41'>HTTP Request</h3>
-<p><code>POST /timesheets/task/history</code></p>
+<p><code>POST /api/{app_path}/task/history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
 
@@ -5048,8 +5460,21 @@
 <td>object with all fields or empty object</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>: array of objects:<br></p>
+
+<ul>
+<li><strong>status</strong> (String): - <em>May be: &quot;new&quot;, &quot;in-progress&quot;, &quot;cancelled&quot;, &quot;done&quot;</em><br></li>
+<li><strong>date</strong> (Timestamp): - <em>Date of change status</em><br></li>
+<li><strong>user</strong> (object): - <em>User, who changed the status</em><br>
+
+<ul>
+<li><strong>first_name</strong> (String)   <br></li>
+<li><strong>last_name</strong> (String)  <br></li>
+</ul></li>
+</ul>
 <h2 id='history-of-changes-task-2'>History of changes task.</h2><h3 id='http-request-42'>HTTP Request</h3>
-<p><code>POST /timesheets/task/work_history</code></p>
+<p><code>POST /api/{app_path}/task/work_history</code></p>
 
 <p>HEADER: “Authorization” = Bearer {token}  (Auth token. String. Required)</p>
 
@@ -5187,6 +5612,67 @@
 <td></td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>:<br></p>
+
+<ul>
+<li><p><strong>time_entries</strong> (Array): - <em>Array of TimeEntry objects</em>:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>user_id</strong> (Integer) <br></li>
+<li><strong>task_id</strong> (Integer) <br></li>
+<li><strong>status</strong> (String)  May be: in-progress, rejected, approved<br></li>
+<li><strong>start_time</strong> (Timestamp) <br></li>
+<li><strong>end_time</strong> (Timestamp) (optional, if TimeEntry ended)<br></li>
+<li><strong>payment_status</strong> (String) May be: pending, payed<br></li>
+<li><strong>breaks</strong> (Integer)  Count of breaks<br></li>
+<li><strong>comments</strong> (Integer)  Count of comments<br></li>
+<li><strong>duration</strong> (Integer) Duration in seconds<br></li>
+<li><strong>start_location</strong> (Array of float) - array of coordinates<br></li>
+<li><strong>end_location</strong> (Array of float) - array of coordinates<br></li>
+<li><strong>approve_date</strong> (Timestamp): - <em>Date of approve</em><br></li>
+</ul></li>
+<li><p><strong>users</strong> (Array of <strong>[key:object]</strong>): - <em>Array of User objects</em><br></p>
+
+<ul>
+<li><strong>key</strong> (Integer) - User ID  <br></li>
+<li>object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer)   <br></li>
+<li><strong>first_name</strong> (String)   <br></li>
+<li><strong>last_name</strong> (String)  <br></li>
+</ul></li>
+</ul></li>
+<li><p><strong>tasks</strong> (Array of <strong>[key:object]</strong>): - <em>Array of Task objects</em><br></p>
+
+<ul>
+<li><strong>key</strong> (Integer) - Task ID  <br></li>
+<li>object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer)   <br></li>
+<li><strong>project</strong> (Integer)  - Project ID <br></li>
+<li><strong>name</strong> (String)  <br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+</ul></li>
+</ul></li>
+<li><p><strong>projects</strong> (Array of <strong>[key:object]</strong>): - <em>Array of Project objects</em><br></p>
+
+<ul>
+<li><strong>key</strong> (Integer) - Project ID  <br></li>
+<li>object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer)   <br></li>
+<li><strong>name</strong> (String)  <br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>client_id</strong> (Integer)  - Client ID <br></li>
+<li><strong>tasks</strong> (Array)  - Array of Task ID <br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='add-comment-to-task'>Add comment to task</h2><h3 id='http-request-43'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/task/add_comment</code></p>
 
@@ -5344,6 +5830,32 @@
 <td>Count of finded comments</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>:<br></p>
+
+<ul>
+<li><p><strong>comments</strong> (Array): - <em>Array of Comment objects</em>:<br></p>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>commentator</strong> (Integer) - User ID <br></li>
+<li><strong>content</strong> (String) - Text of comment<br></li>
+<li><strong>date</strong> (Timestamp) - Date of comment<br></li>
+</ul></li>
+<li><p><strong>users</strong> (Array of <strong>[key:object]</strong>): <br></p>
+
+<ul>
+<li><strong>key</strong> (Integer) - User ID <br></li>
+<li>object: <br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>first_name</strong> (String)  <br></li>
+<li><strong>last_name</strong> (String) <br></li>
+<li><strong>picture</strong> (String) - Link to user avatar<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='project'><ins><strong>PROJECT</strong></ins></h2>
 <p>Project API for iBuildApp Timesheets, handling getting project information, creating/deleting/updating a project, and searching for projects.</p>
 <h2 id='get-project-info'>Get Project Info</h2><h3 id='http-request-45'>HTTP Request</h3>
@@ -5421,6 +5933,24 @@
 <td>User object with all fields or empty object</td>
 </tr>
 </tbody></table>
+
+<p><strong>Data</strong>: object of Project:</p>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>client_id</strong> (Integer) - Client ID<br></li>
+<li><strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>planned_start_date</strong> (Timestamp) <br></li>
+<li><strong>actual_start_date</strong> (Timestamp)  <br></li>
+<li><strong>planned_end_date</strong> (Timestamp)  <br></li>
+<li><strong>actual_end_date</strong> (Timestamp)  <br></li>
+<li><strong>estimated_duration</strong> (Float)<br></li>
+<li><strong>actual_duration</strong> (Float)  <br></li>
+<li><strong>tasks</strong> (Array of Integer) - Array of related Task ID<br></li>
+</ul>
 <h2 id='create-new-project'>Create New Project</h2><h3 id='http-request-46'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/create</code></p>
 
@@ -5805,30 +6335,41 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>projects</strong>: - <em>array of Project objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>description</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>planned_start_date</strong> (Timestamp) <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>actual_start_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>planned_end_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>actual_end_date</strong> (Timestamp)  <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>estimated_duration</strong> (Float)<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>actual_duration</strong> (Float)  <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> - array of IDs related Tasks<br></p>
+<p><strong>Data</strong>:<br></p>
 
-<p>• <strong>tasks</strong>: - <em>array of *</em>[key:object]** related Tasks:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Task<br>
-&ensp;&ensp;&ensp;&ensp;• object - Task<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> Duration of all related TimeEntries. In seconds<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> - array of IDs related Users<br></p>
+<ul>
+<li><p><strong>projects</strong>: - <em>array of Project objects:</em><br></p>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>description</strong> (String)<br></li>
+<li><strong>client_id</strong> (Integer) - Client ID<br></li>
+<li><strong>duration_unit</strong> (String) - May be: minutes, hours, days, months, years<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>planned_start_date</strong> (Timestamp) <br></li>
+<li><strong>actual_start_date</strong> (Timestamp)  <br></li>
+<li><strong>planned_end_date</strong> (Timestamp)  <br></li>
+<li><strong>actual_end_date</strong> (Timestamp)  <br></li>
+<li><strong>estimated_duration</strong> (Float)<br></li>
+<li><strong>actual_duration</strong> (Float)  <br></li>
+<li><strong>tasks</strong> - array of IDs related Tasks<br></li>
+</ul></li>
+<li><p><strong>tasks</strong>: - <em>array of *</em>[key:object]** related Tasks:*<br></p>
+
+<ul>
+<li><strong>key</strong> - ID of Task<br></li>
+<li>object - Task<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>duration</strong> Duration of all related TimeEntries. In seconds<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>users</strong> - array of IDs related Users<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='search-projects-with-grouping'>Search Projects with Grouping</h2><h3 id='http-request-49'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/search_group</code></p>
 
@@ -6073,32 +6614,51 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
-• <strong>groups</strong>: - <em>array of objects:</em><br>
-&ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
-&ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>items</strong> - Array of object:<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String) <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>client_id</strong> (Integer) - Client ID<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>tasks</strong> (Array) - array of IDs related Tasks<br></p>
+<p><strong>Data</strong>:<br></p>
 
-<p>• <strong>clients</strong>: - <em>array of *</em>[key:object]** related Clients:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Client<br>
-&ensp;&ensp;&ensp;&ensp;• object - Client<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br></p>
+<ul>
+<li><strong>count</strong> (Integer): - <em>Count of finded groups</em><br></li>
+<li><p><strong>groups</strong>: - <em>array of objects:</em><br></p>
 
-<p>• <strong>tasks</strong>: - <em>array of *</em>[key:object]** related Tasks:<em><br>
-&ensp;&ensp;&ensp;&ensp;• **key</em>* - ID of Task<br>
-&ensp;&ensp;&ensp;&ensp;• object - Task<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>id</strong> (Integer)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>name</strong> (String)<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>duration</strong> Duration of all related TimeEntries. In seconds<br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br>
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>users</strong> (Array) - Array of IDs related Users<br></p>
+<ul>
+<li><strong>value</strong> - Value of grouping field <br></li>
+<li><strong>count</strong> (Integer) - Count of items in group<br></li>
+<li><strong>items</strong> - Array of object:<br>
+
+<ul>
+<li><strong>id</strong> (Integer) <br></li>
+<li><strong>name</strong> (String) <br></li>
+<li><strong>status</strong> (String)  May be: new, in-progress, cancelled, done<br></li>
+<li><strong>client_id</strong> (Integer) - Client ID<br></li>
+<li><strong>tasks</strong> (Array) - array of IDs related Tasks<br></li>
+</ul></li>
+</ul></li>
+<li><p><strong>clients</strong>: - <em>array of *</em>[key:object]** related Clients:*<br></p>
+
+<ul>
+<li><strong>key</strong> - ID of Client<br></li>
+<li>object - Client<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+</ul></li>
+</ul></li>
+<li><p><strong>tasks</strong>: - <em>array of *</em>[key:object]** related Tasks:*<br></p>
+
+<ul>
+<li><strong>key</strong> - ID of Task<br></li>
+<li>object - Task<br>
+
+<ul>
+<li><strong>id</strong> (Integer)<br></li>
+<li><strong>name</strong> (String)<br></li>
+<li><strong>duration</strong> Duration of all related TimeEntries. In seconds<br></li>
+<li><strong>status</strong> (String) - May be: new, in-progress, cancelled, done <br></li>
+<li><strong>users</strong> (Array) - Array of IDs related Users<br></li>
+</ul></li>
+</ul></li>
+</ul>
 <h2 id='delete-project'>Delete Project</h2><h3 id='http-request-50'>HTTP Request</h3>
 <p><code>POST /api/{APP_CODE}/project/delete</code></p>
 
@@ -6946,8 +7506,9 @@
 </tr>
 </tbody></table>
 
-<p>Data- <em>array of Rate objects:</em><br>
-• <strong>id</strong> (Integer) Rate ID<br>
+<p><strong>Data</strong> - <em>array of Rate objects:</em><br></p>
+
+<p>• <strong>id</strong> (Integer) Rate ID<br>
 • <strong>schedule_id</strong> (Integer) Schedule ID<br>
 • <strong>user_id</strong> (Integer) User ID<br>
 • <strong>name</strong> (String) <br>
@@ -7886,8 +8447,9 @@
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
+<p>Data:<br></p>
+
+<p>• <strong>count</strong> (Integer): - <em>Count of finded groups</em><br>
 • <strong>groups</strong>: - <em>array of objects:</em><br>
 &ensp;&ensp;&ensp;&ensp;• <strong>value</strong> - Value of grouping field <br>
 &ensp;&ensp;&ensp;&ensp;• <strong>count</strong> (Integer) - Count of items in group<br>
@@ -8952,8 +9514,9 @@ For Xero: import Vendors as Users.</p>
 </tr>
 </tbody></table>
 
-<p>Data:<br>
-&ensp;&ensp;&ensp;&ensp;• <strong>imported</strong>[key:object]: - <em>list of successfully imported Employees as Users</em><br>
+<p>Data:<br></p>
+
+<p>&ensp;&ensp;&ensp;&ensp;• <strong>imported</strong>[key:object]: - <em>list of successfully imported Employees as Users</em><br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - ID New User<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object:<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>first_name</strong> - user first name<br>
@@ -9074,8 +9637,9 @@ Xero: Projects and tasks can not be updated, only imported (if not present).</p>
 </tr>
 </tbody></table>
 
-<p>Data :<br>
-<strong>customers</strong>:<br>
+<p>Data :<br></p>
+
+<p><strong>customers</strong>:<br>
 &ensp;&ensp;&ensp;&ensp;• <strong>imported</strong>[key:object]: - <em>list of successfully imported clients as Customers</em><br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - ID Client<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object: - <em>New Client</em><br>
@@ -9196,8 +9760,9 @@ Xero: Projects and tasks can not be updated, only imported (if not present).</p>
 </tr>
 </tbody></table>
 
-<p>Data :<br>
-<strong>users</strong>:<br>
+<p>Data :<br></p>
+
+<p><strong>users</strong>:<br>
 &ensp;&ensp;&ensp;&ensp;• <strong>exported</strong>[key:object]: - <em>list of successfully exported users</em><br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• <strong>key</strong> - user_id<br>
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;• object:<br>
